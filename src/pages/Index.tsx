@@ -25,9 +25,9 @@ const Index = () => {
           <h1 className="text-xl sm:text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
             Omprakash Pawar
           </h1>
-           <p className="mt-0.5 text-sm sm:text-base font-serif italic font-bold text-muted-foreground">
-             Full Stack Web Developer & Designer
-           </p>
+          <p className="mt-0.5 text-sm sm:text-base font-serif italic font-bold text-muted-foreground">
+            Full Stack Web Developer & Designer
+          </p>
         </motion.div>
 
         <motion.div {...fadeUp} transition={{ duration: 0.5, delay: 0.1 }} className="mt-5">
@@ -44,7 +44,167 @@ const Index = () => {
               className="font-serif italic font-bold underline underline-offset-2 hover:text-muted-foreground transition-colors"
             >
               GoDigiWeb
+            </a>{" "}
+            and{" "}
+            <a
+              href="https://getstay.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-serif italic font-bold underline underline-offset-2 hover:text-muted-foreground transition-colors"
+            >
+              GetStay.in
             </a>
+            .
+          </p>
+          <p className="mt-2 leading-relaxed text-foreground text-sm">
+            In the past I've worked as a Backend Developer at{" "}
+            <a
+              href="#"
+              className="font-serif italic font-bold underline underline-offset-2 hover:text-muted-foreground transition-colors"
+            >
+              Plixipy
+            </a>{" "}
+            and Frontend Developer at{" "}
+            <a
+              href="https://atlyr.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-serif italic font-bold underline underline-offset-2 hover:text-muted-foreground transition-colors"
+            >
+              Atlyr.in
+            </a>
+            .
+          </p>
+        </motion.div>
+
+        {/* Social Pills */}
+        <motion.div
+          {...fadeUp}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mt-5 flex flex-wrap gap-2"
+        >
+          <SocialPill label="GitHub" href="https://github.com/ompawar15" />
+          <SocialPill
+            label="LinkedIn"
+            href="https://linkedin.com/in/omprakash-pawar"
+          />
+          <SocialPill
+            label="Portfolio"
+            href="https://the-om-pawar.github.io/developer/"
+          />
+          <SocialPill label="Contact" href="mailto:om.pawar1512@gmail.com" />
+        </motion.div>
+
+        {/* Three Column Grid */}
+        <div className="mt-8 md:mt-10 grid grid-cols-3 gap-4 sm:gap-6">
+          <SectionGroup
+            heading="Building"
+            delay={0.3}
+            items={[
+              {
+                title: "GoDigiWeb",
+                subtitle: "Helping businesses scale with custom web & cloud solutions.",
+                href: "https://www.godigiweb.site/",
+              },
+              {
+                title: "GetStay.in",
+                subtitle: "Hostel & PG management software plus directory.",
+                href: "https://getstay.in",
+              },
+            ]}
+          />
+          <SectionGroup
+            heading="Work"
+            delay={0.4}
+            items={[
+              {
+                title: "Freelancing",
+                subtitle: "Web solutions for gym owners with membership & payment features.",
+              },
+              {
+                title: "Plixipy",
+                subtitle: "Backend Developer — APIs, DB optimization, server-side features.",
+              },
+              {
+                title: "Atlyr.in",
+                subtitle: "Frontend Developer — website UI & functionalities alongside IITians.",
+                href: "https://atlyr.in",
+              },
+            ]}
+          />
+          <SectionGroup
+            heading="Projects"
+            delay={0.5}
+            items={[
+              {
+                title: "Real-time Chat App",
+                subtitle: "Socket.io, Node.js, React",
+              },
+              {
+                title: "Hospital Management System",
+                subtitle: "Real-time with LLM integration & custom Figma UI/UX.",
+              },
+              {
+                title: "ERPNext on AWS",
+                subtitle: "Independently deployed large-scale ERP on cloud infrastructure.",
+              },
+            ]}
+          />
+        </div>
+
+        {/* About */}
+        <motion.div
+          {...fadeUp}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          className="mt-12"
+        >
+          <h2 className="text-base font-semibold tracking-tight text-foreground">
+            Who is Om?
+          </h2>
+          <div className="mt-2 space-y-2 leading-relaxed text-foreground text-sm">
+            <p>
+              Hi! <em className="font-serif font-bold">I am Omprakash Pawar</em>, a Full-Stack Developer with 3
+              years of experience building and deploying scalable web, real-time,
+              and cloud applications.
+            </p>
+            <p>
+              I started my journey as a frontend developer and expanded to
+              full-stack, working with JavaScript, TypeScript, Node.js, React,
+              and AWS. Currently growing my expertise in{" "}
+              <em className="font-serif font-bold">AI/ML using Python</em>.
+            </p>
+          </div>
+        </motion.div>
+
+        {/* What is Om doing */}
+        <motion.div
+          {...fadeUp}
+          transition={{ duration: 0.5, delay: 0.7 }}
+          className="mt-10"
+        >
+          <h2 className="text-base font-semibold tracking-tight text-foreground">
+            What is Om doing?
+          </h2>
+          <div className="mt-2 space-y-2 leading-relaxed text-foreground text-sm">
+            <p>
+              Currently I'm building{" "}
+              <a
+                href="https://getstay.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-serif italic font-bold underline underline-offset-2 hover:text-muted-foreground transition-colors"
+              >
+                GetStay.in
+              </a>
+              , a hostel & PG management platform, and scaling businesses through{" "}
+              <a
+                href="https://www.godigiweb.site/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-serif italic font-bold underline underline-offset-2 hover:text-muted-foreground transition-colors"
+              >
+                GoDigiWeb
+              </a>
               .
             </p>
             <p>
@@ -106,21 +266,21 @@ const Index = () => {
               href="https://github.com/ompawar15"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-serif italic underline underline-offset-2 hover:text-muted-foreground transition-colors"
+              className="font-serif italic font-bold underline underline-offset-2 hover:text-muted-foreground transition-colors"
             >
               @ompawar15
             </a>{" "}
             ·{" "}
             <a
               href="mailto:om.pawar1512@gmail.com"
-              className="font-serif italic underline underline-offset-2 hover:text-muted-foreground transition-colors"
+              className="font-serif italic font-bold underline underline-offset-2 hover:text-muted-foreground transition-colors"
             >
               om.pawar1512@gmail.com
             </a>{" "}
             ·{" "}
             <a
               href="tel:+919522557828"
-              className="font-serif italic underline underline-offset-2 hover:text-muted-foreground transition-colors"
+              className="font-serif italic font-bold underline underline-offset-2 hover:text-muted-foreground transition-colors"
             >
               +91 9522557828
             </a>
