@@ -5,6 +5,7 @@ import { SectionGroup } from "@/components/SectionCard";
 import ThemeToggle from "@/components/ThemeToggle";
 import MusicPlayer from "@/components/MusicPlayer";
 import PixelTrail from "@/components/PixelTrail";
+import LinkPreview from "@/components/LinkPreview";
 
 const fadeUp = {
   initial: { opacity: 0, y: 20 },
@@ -37,42 +38,36 @@ const Index = () => {
           </p>
           <p className="mt-2 leading-relaxed text-foreground text-sm">
             Currently freelancing and building{" "}
-            <a
+            <LinkPreview
               href="https://www.godigiweb.site/"
-              target="_blank"
-              rel="noopener noreferrer"
               className="font-serif italic font-normal underline underline-offset-2 hover:text-muted-foreground transition-colors"
             >
               GoDigiWeb
-            </a>{" "}
+            </LinkPreview>{" "}
             and{" "}
-            <a
+            <LinkPreview
               href="https://getstay.in"
-              target="_blank"
-              rel="noopener noreferrer"
               className="font-serif italic font-normal underline underline-offset-2 hover:text-muted-foreground transition-colors"
             >
               GetStay.in
-            </a>
+            </LinkPreview>
             .
           </p>
           <p className="mt-2 leading-relaxed text-foreground text-sm">
             In the past I've worked as a Backend Developer at{" "}
-            <a
+            <LinkPreview
               href="#"
               className="font-serif italic font-normal underline underline-offset-2 hover:text-muted-foreground transition-colors"
             >
               Plixipy
-            </a>{" "}
+            </LinkPreview>{" "}
             and Frontend Developer at{" "}
-            <a
+            <LinkPreview
               href="https://atlyr.in"
-              target="_blank"
-              rel="noopener noreferrer"
               className="font-serif italic font-normal underline underline-offset-2 hover:text-muted-foreground transition-colors"
             >
               Atlyr.in
-            </a>
+            </LinkPreview>
             .
           </p>
         </motion.div>
@@ -194,23 +189,19 @@ const Index = () => {
           <div className="mt-2 space-y-2 leading-relaxed text-foreground text-sm">
             <p>
               Currently I'm building{" "}
-              <a
+              <LinkPreview
                 href="https://getstay.in"
-                target="_blank"
-                rel="noopener noreferrer"
                 className="font-serif italic font-normal underline underline-offset-2 hover:text-muted-foreground transition-colors"
               >
                 GetStay.in
-              </a>
+              </LinkPreview>
               , a hostel & PG management platform, and scaling businesses through{" "}
-              <a
+              <LinkPreview
                 href="https://www.godigiweb.site/"
-                target="_blank"
-                rel="noopener noreferrer"
                 className="font-serif italic font-normal underline underline-offset-2 hover:text-muted-foreground transition-colors"
               >
                 GoDigiWeb
-              </a>
+              </LinkPreview>
               .
             </p>
             <p>
@@ -268,14 +259,12 @@ const Index = () => {
           </h2>
           <p className="mt-2 leading-relaxed text-foreground text-sm">
             Reach me at{" "}
-            <a
+            <LinkPreview
               href="https://github.com/THE-OM-PAWAR"
-              target="_blank"
-              rel="noopener noreferrer"
               className="font-serif italic font-normal underline underline-offset-2 hover:text-muted-foreground transition-colors"
             >
               @ompawar15
-            </a>{" "}
+            </LinkPreview>{" "}
             ·{" "}
             <a
               href="mailto:ompawar.work@gmail.com"

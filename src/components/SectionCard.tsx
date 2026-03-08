@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
+import LinkPreview from "@/components/LinkPreview";
 import {
   Tooltip,
   TooltipContent,
@@ -40,9 +41,9 @@ const SectionCard = ({ title, subtitle, href, aiEnabled }: SectionCardProps) => 
 
   if (href) {
     return (
-      <a href={href} target="_blank" rel="noopener noreferrer">
+      <LinkPreview href={href}>
         {content}
-      </a>
+      </LinkPreview>
     );
   }
 
