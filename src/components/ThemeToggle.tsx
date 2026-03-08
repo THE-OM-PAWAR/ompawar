@@ -27,9 +27,7 @@ const ThemeToggle = () => {
   const handleOverlayComplete = useCallback(
     (definition: string) => {
       if (definition === "visible") {
-        // Overlay fully covers screen — switch theme underneath
         setTheme(overlayTheme);
-        // Small delay then dismiss overlay
         setTimeout(() => setTransitioning(false), 80);
       }
     },
@@ -38,7 +36,6 @@ const ThemeToggle = () => {
 
   return (
     <>
-      {/* Slide-up overlay with blur */}
       <AnimatePresence>
         {transitioning && (
           <motion.div
@@ -66,9 +63,9 @@ const ThemeToggle = () => {
 
       <motion.button
         onClick={toggleTheme}
-        className="fixed bottom-6 right-6 z-[9999] flex h-11 w-11 items-center justify-center rounded-full bg-foreground text-background shadow-lg transition-colors hover:opacity-80"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
+        className="fixed bottom-6 right-6 z-[9999] flex h-9 w-9 items-center justify-center rounded-full border border-border bg-background text-foreground shadow-sm transition-colors hover:bg-muted"
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
         aria-label="Toggle theme"
       >
         <AnimatePresence mode="wait">
@@ -79,7 +76,7 @@ const ThemeToggle = () => {
             exit={{ y: -12, opacity: 0, filter: "blur(4px)" }}
             transition={{ duration: 0.2 }}
           >
-            {theme === "light" ? <Moon size={18} /> : <Sun size={18} />}
+            {theme === "light" ? <Sun size={16} strokeWidth={1.5} /> : <Moon size={16} strokeWidth={1.5} />}
           </motion.div>
         </AnimatePresence>
       </motion.button>
