@@ -88,13 +88,13 @@
   }
 }
 
-/* Pixel Button Styles */
-.button01 {
-  --pixel-size: 4px;
-  --duration: 0.5s;
+/* Arrow Dots Button Styles */
+.button05 {
+  --dot-size: 3px;
+  --dot-gap: 2px;
+  --duration: 0.4s;
   --bg-color: hsl(var(--primary));
   --text-color: hsl(var(--primary-foreground));
-  --pixel-color: hsl(var(--primary));
 
   position: relative;
   display: inline-flex;
@@ -107,99 +107,27 @@
   padding: 0;
 }
 
-.button01_bg {
+.button05_bg {
   position: absolute;
   inset: 0;
-  display: flex;
-  overflow: hidden;
-  border-radius: 6px;
-}
-
-.button01_bg-mid {
-  flex: 1;
   background: var(--bg-color);
+  border-radius: 6px;
   transform: scaleX(0);
   transform-origin: left;
   transition: transform var(--duration) cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.button01:hover .button01_bg-mid {
+.button05:hover .button05_bg {
   transform: scaleX(1);
 }
 
-.button01_bg-right {
-  position: absolute;
-  right: -12px;
-  top: 0;
-  bottom: 0;
-  width: 28px;
-  display: grid;
-  grid-template-columns: repeat(5, var(--pixel-size));
-  grid-template-rows: repeat(5, var(--pixel-size));
-  align-content: center;
-  gap: 1px;
-  opacity: 0;
-  transition: opacity var(--duration) cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.button01:hover .button01_bg-right {
-  opacity: 1;
-}
-
-.button01_bg-right-overlay {
-  position: absolute;
-  right: -20px;
-  top: 0;
-  bottom: 0;
-  width: 24px;
-  display: grid;
-  grid-template-columns: repeat(4, var(--pixel-size));
-  grid-template-rows: repeat(3, var(--pixel-size));
-  align-content: center;
-  gap: 1px;
-  opacity: 0;
-  transition: opacity var(--duration) cubic-bezier(0.22, 1, 0.36, 1) 0.05s;
-}
-
-.button01:hover .button01_bg-right-overlay {
-  opacity: 0.6;
-}
-
-.button01_bg-pixel {
-  display: block;
-  width: var(--pixel-size);
-  height: var(--pixel-size);
-  background: var(--pixel-color);
-  opacity: 0;
-  animation: none;
-}
-
-.button01:hover .button01_bg-pixel {
-  animation: pixelFadeIn var(--duration) cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  animation-delay: calc(var(--index, 0) * 0.06s);
-}
-
-@keyframes pixelFadeIn {
-  0% {
-    opacity: 0;
-    transform: scale(0);
-  }
-  50% {
-    opacity: 0.8;
-    transform: scale(1.2);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.button01_inner {
+.button05_inner {
   position: relative;
   z-index: 1;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 8px;
   padding: 10px 20px;
   font-size: 0.875rem;
   font-weight: 500;
@@ -210,32 +138,72 @@
   background: transparent;
 }
 
-.button01:hover .button01_inner {
+.button05:hover .button05_inner {
   color: var(--text-color);
   border-color: var(--bg-color);
 }
 
-.button01_text {
+.button05_text {
   position: relative;
   display: inline-block;
   letter-spacing: 0.02em;
 }
 
-.button01_inner::after {
-  content: attr(data-text);
-  position: absolute;
-  inset: 0;
+.button05_icon-wrap {
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--text-color);
-  clip-path: inset(0 100% 0 0);
-  transition: clip-path var(--duration) cubic-bezier(0.22, 1, 0.36, 1);
-  padding: 10px 20px;
+  width: 14px;
+  height: 14px;
+  overflow: hidden;
 }
 
-.button01:hover .button01_inner::after {
-  clip-path: inset(0 0 0 0);
+.button05_icon {
+  position: absolute;
+  display: grid;
+  grid-template-columns: repeat(1, var(--dot-size));
+  grid-template-rows: repeat(5, var(--dot-size));
+  gap: var(--dot-gap);
+  right: 0;
+  transform: translateX(calc(var(--index-parent, 0) * -1 * (var(--dot-size) + var(--dot-gap) + 2px)));
+  opacity: 0;
+  transition: opacity var(--duration) cubic-bezier(0.22, 1, 0.36, 1),
+              transform var(--duration) cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(var(--index-parent, 0) * 0.05s);
+}
+
+.button05:hover .button05_icon {
+  opacity: 1;
+  transform: translateX(calc(var(--index-parent, 0) * -1 * (var(--dot-size) + var(--dot-gap))));
+}
+
+.button05_dot {
+  display: block;
+  width: var(--dot-size);
+  height: var(--dot-size);
+  border-radius: 50%;
+  background: hsl(var(--foreground));
+  transform: scale(0);
+  transition: transform var(--duration) cubic-bezier(0.22, 1, 0.36, 1),
+              background var(--duration) cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(var(--index, 0) * 0.06s);
+}
+
+.button05:hover .button05_dot {
+  transform: scale(1);
+  background: var(--text-color);
+}
+
+@keyframes dotPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+}
+
+.button05:hover .button05_dot {
+  animation: dotPulse 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: calc(var(--index, 0) * 0.06s + var(--index-parent, 0) * 0.08s);
 }
