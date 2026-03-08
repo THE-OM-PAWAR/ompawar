@@ -96,7 +96,7 @@ const Index = () => {
         </motion.div>
 
         {/* Three Column Grid */}
-        <div className="mt-8 md:mt-10 grid grid-cols-1 gap-8 sm:grid-cols-3 sm:gap-6">
+        <div className="mt-8 md:mt-10 grid grid-cols-3 gap-4 sm:gap-6">
           <SectionGroup
             heading="Building"
             delay={0.3}
