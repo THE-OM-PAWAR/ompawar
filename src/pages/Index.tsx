@@ -3,6 +3,7 @@ import LiveClock from "@/components/LiveClock";
 import SocialPill from "@/components/SocialPill";
 import { SectionGroup } from "@/components/SectionCard";
 import ThemeToggle from "@/components/ThemeToggle";
+import MusicPlayer from "@/components/MusicPlayer";
 import PixelTrail from "@/components/PixelTrail";
 
 const fadeUp = {
