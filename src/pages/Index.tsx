@@ -19,13 +19,13 @@ const Index = () => {
       <MusicPlayer />
       <LiveClock />
 
-      <div className="relative z-[2] mx-auto max-w-2xl px-6 pb-16 pt-16 md:pt-24">
+      <div className="relative z-[2] mx-auto max-w-2xl px-4 sm:px-6 pb-12 pt-12 md:pt-24">
         {/* Hero */}
         <motion.div {...fadeUp} transition={{ duration: 0.5 }}>
-          <h1 className="text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
+          <h1 className="text-xl sm:text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
             Omprakash Pawar
           </h1>
-          <p className="mt-0.5 text-base font-serif italic text-muted-foreground">
+          <p className="mt-0.5 text-sm sm:text-base font-serif italic text-muted-foreground">
             Full Stack Web Developer & Designer
           </p>
         </motion.div>
@@ -96,7 +96,7 @@ const Index = () => {
         </motion.div>
 
         {/* Three Column Grid */}
-        <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
+        <div className="mt-8 md:mt-10 grid grid-cols-1 gap-8 sm:grid-cols-3 sm:gap-6">
           <SectionGroup
             heading="Building"
             delay={0.3}
