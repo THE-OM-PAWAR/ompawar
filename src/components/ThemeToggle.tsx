@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sun, Moon } from "lucide-react";
 
-const PIXEL_SIZE = 40;
+const PIXEL_SIZE = 24;
 const TRANSITION_DURATION = 600; // ms
 
 const ThemeToggle = () => {
