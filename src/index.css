@@ -38,7 +38,7 @@
 
     --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
     --font-mono: 'JetBrains Mono', ui-monospace, monospace;
-    --font-italic: 'Playfair Display', Georgia, serif;
+    --font-italic: 'Old Standard TT', Georgia, serif;
   }
 
   .dark {
