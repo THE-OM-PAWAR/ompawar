@@ -6,11 +6,27 @@ const MusicPlayer = () => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
-    audioRef.current = new Audio("/music.mp3");
-    audioRef.current.loop = true;
-    audioRef.current.volume = 0.5;
+    const audio = new Audio("/music.mp3");
+    audio.loop = true;
+    audio.volume = 0.5;
+    audioRef.current = audio;
+
+    // Attempt autoplay
+    audio.play().then(() => {
+      setPlaying(true);
+    }).catch(() => {
+      // Browser blocked autoplay; start on first user interaction
+      const startOnInteraction = () => {
+        audio.play().then(() => setPlaying(true)).catch(() => {});
+        document.removeEventListener("click", startOnInteraction);
+        document.removeEventListener("keydown", startOnInteraction);
+      };
+      document.addEventListener("click", startOnInteraction);
+      document.addEventListener("keydown", startOnInteraction);
+    });
+
     return () => {
-      audioRef.current?.pause();
+      audio.pause();
       audioRef.current = null;
     };
   }, []);
