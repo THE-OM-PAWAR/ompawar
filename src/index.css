@@ -120,11 +120,10 @@
   background: var(--bg-color);
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform var(--duration) cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .button01:hover .button01_bg-mid {
-  transform: scaleX(1);
+  transform: scaleX(0);
 }
 
 .button01_bg-right {
