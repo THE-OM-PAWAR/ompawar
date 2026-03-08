@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital@1&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -38,6 +38,7 @@
 
     --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
     --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+    --font-italic: 'Playfair Display', Georgia, serif;
   }
 
   .dark {
@@ -85,6 +86,13 @@
 @layer utilities {
   .font-mono {
     font-family: var(--font-mono);
+  }
+}
+
+@layer base {
+  em, i, .italic {
+    font-family: var(--font-italic);
+    font-style: italic;
   }
 }
 
