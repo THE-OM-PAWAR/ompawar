@@ -25,9 +25,9 @@ const Index = () => {
           <h1 className="text-xl sm:text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
             Omprakash Pawar
           </h1>
-          <p className="mt-0.5 text-sm sm:text-base font-serif italic text-muted-foreground">
-            Full Stack Web Developer & Designer
-          </p>
+           <p className="mt-0.5 text-sm sm:text-base font-serif italic font-bold text-muted-foreground">
+             Full Stack Web Developer & Designer
+           </p>
         </motion.div>
 
         <motion.div {...fadeUp} transition={{ duration: 0.5, delay: 0.1 }} className="mt-5">
