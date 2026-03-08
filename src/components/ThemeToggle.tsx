@@ -9,7 +9,8 @@ const ThemeToggle = () => {
     }
     return "light";
   });
-  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [transitioning, setTransitioning] = useState(false);
+  const [overlayTheme, setOverlayTheme] = useState<"light" | "dark">("light");
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", theme === "dark");
@@ -17,24 +18,48 @@ const ThemeToggle = () => {
   }, [theme]);
 
   const toggleTheme = useCallback(() => {
-    setIsTransitioning(true);
-    setTimeout(() => {
-      setTheme((prev) => (prev === "light" ? "dark" : "light"));
-      setTimeout(() => setIsTransitioning(false), 500);
-    }, 150);
-  }, []);
+    if (transitioning) return;
+    const nextTheme = theme === "light" ? "dark" : "light";
+    setOverlayTheme(nextTheme);
+    setTransitioning(true);
+  }, [theme, transitioning]);
+
+  const handleOverlayComplete = useCallback(
+    (definition: string) => {
+      if (definition === "visible") {
+        // Overlay fully covers screen — switch theme underneath
+        setTheme(overlayTheme);
+        // Small delay then dismiss overlay
+        setTimeout(() => setTransitioning(false), 80);
+      }
+    },
+    [overlayTheme]
+  );
 
   return (
     <>
-      {/* Full-screen transition overlay */}
+      {/* Slide-up overlay with blur */}
       <AnimatePresence>
-        {isTransitioning && (
+        {transitioning && (
           <motion.div
-            initial={{ opacity: 0, y: 40, filter: "blur(8px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            exit={{ opacity: 0, y: -40, filter: "blur(8px)" }}
-            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 z-[9998] bg-background pointer-events-none"
+            initial={{ y: "100%", filter: "blur(12px)" }}
+            animate="visible"
+            exit={{ y: "-100%", filter: "blur(12px)" }}
+            variants={{
+              visible: { y: "0%", filter: "blur(0px)" },
+            }}
+            transition={{
+              duration: 0.55,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            onAnimationComplete={handleOverlayComplete}
+            className="fixed inset-0 z-[9998] pointer-events-none"
+            style={{
+              backgroundColor:
+                overlayTheme === "dark"
+                  ? "hsl(0 0% 7%)"
+                  : "hsl(0 0% 96%)",
+            }}
           />
         )}
       </AnimatePresence>
@@ -49,10 +74,10 @@ const ThemeToggle = () => {
         <AnimatePresence mode="wait">
           <motion.div
             key={theme}
-            initial={{ y: 10, opacity: 0, filter: "blur(4px)" }}
+            initial={{ y: 12, opacity: 0, filter: "blur(4px)" }}
             animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
-            exit={{ y: -10, opacity: 0, filter: "blur(4px)" }}
-            transition={{ duration: 0.25 }}
+            exit={{ y: -12, opacity: 0, filter: "blur(4px)" }}
+            transition={{ duration: 0.2 }}
           >
             {theme === "light" ? <Moon size={18} /> : <Sun size={18} />}
           </motion.div>
