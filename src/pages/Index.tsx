@@ -114,30 +114,25 @@ const Index = () => {
               },
             ]}
           />
-           <SectionGroup
-             heading="Work"
-             delay={0.4}
-             items={[
-               {
-                 title: "1:1 Mentorship",
-                 subtitle: "WebDev & AIML mentorship on Unstop.",
-                 href: "https://unstop.com/mentor/Ompawar?ref=OTLpd6kI",
-               },
-               {
-                 title: "Freelancing",
-                 subtitle: "Web solutions for gym owners with membership & payment features.",
-               },
-               {
-                 title: "Plixipy",
-                 subtitle: "Backend Developer — APIs, DB optimization, server-side features.",
-               },
-               {
-                 title: "Atlyr.in",
-                 subtitle: "Frontend Developer — website UI & functionalities alongside IITians.",
-                 href: "https://atlyr.in",
-               },
-             ]}
-           />
+          <SectionGroup
+            heading="Work"
+            delay={0.4}
+            items={[
+              {
+                title: "Freelancing",
+                subtitle: "Web solutions for gym owners with membership & payment features.",
+              },
+              {
+                title: "Plixipy",
+                subtitle: "Backend Developer — APIs, DB optimization, server-side features.",
+              },
+              {
+                title: "Atlyr.in",
+                subtitle: "Frontend Developer — website UI & functionalities alongside IITians.",
+                href: "https://atlyr.in",
+              },
+            ]}
+          />
           <SectionGroup
             heading="Projects"
             delay={0.5}
