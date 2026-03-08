@@ -41,9 +41,9 @@ const SectionCard = ({ title, subtitle, href, aiEnabled }: SectionCardProps) => 
 
   if (href) {
     return (
-      <a href={href} target="_blank" rel="noopener noreferrer">
+      <LinkPreview href={href}>
         {content}
-      </a>
+      </LinkPreview>
     );
   }
 
