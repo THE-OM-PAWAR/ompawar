@@ -269,7 +269,7 @@ const Index = () => {
           <p className="mt-2 leading-relaxed text-foreground text-sm">
             Reach me at{" "}
             <a
-              href="https://github.com/ompawar15"
+              href="https://github.com/THE-OM-PAWAR"
               target="_blank"
               rel="noopener noreferrer"
               className="font-serif italic font-normal underline underline-offset-2 hover:text-muted-foreground transition-colors"
