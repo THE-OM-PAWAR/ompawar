@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sun, Moon } from "lucide-react";
 
-const PIXEL_SIZE = 24;
+const PIXEL_SIZE = 12;
 const TRANSITION_DURATION = 600; // ms
 
 const ThemeToggle = () => {
@@ -83,19 +83,20 @@ const ThemeToggle = () => {
             const elapsed2 = now2 - clearStart;
             const prog2 = Math.min(elapsed2 / (TRANSITION_DURATION * 0.6), 1);
             const eased2 = 1 - Math.pow(1 - prog2, 3);
-            const pixelsToClear = Math.floor(eased2 * total);
 
             ctx.clearRect(0, 0, w, h);
+            // Fade from 100% down to 20% opacity
+            const opacity = 1 - eased2 * 0.8;
+            ctx.globalAlpha = opacity;
             ctx.fillStyle = color;
 
-            // Draw remaining pixels
-            const remaining = total - pixelsToClear;
-            for (let i = 0; i < remaining; i++) {
-              const idx = clearIndices[total - 1 - i];
+            for (let i = 0; i < total; i++) {
+              const idx = indices[i];
               const col = idx % cols;
               const row = Math.floor(idx / cols);
               ctx.fillRect(col * PIXEL_SIZE, row * PIXEL_SIZE, PIXEL_SIZE, PIXEL_SIZE);
             }
+            ctx.globalAlpha = 1;
 
             if (prog2 < 1) {
               rafRef.current = requestAnimationFrame(clearAnimate);
