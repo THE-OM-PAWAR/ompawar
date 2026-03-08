@@ -1,5 +1,4 @@
-import { PixelButton } from "@/components/ui/nextjsshop-button";
-import { motion } from "framer-motion";
+import { FlowButton } from "@/components/ui/flow-button";
 
 interface SocialPillProps {
   label: string;
@@ -8,9 +7,7 @@ interface SocialPillProps {
 
 const SocialPill = ({ label, href }: SocialPillProps) => {
   return (
-    <motion.div whileTap={{ scale: 0.97 }}>
-      <PixelButton text={label} href={href} />
-    </motion.div>
+    <FlowButton text={label} href={href} target="_blank" rel="noopener noreferrer" />
   );
 };
 
