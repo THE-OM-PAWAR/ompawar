@@ -17,29 +17,29 @@ const Index = () => {
       <ThemeToggle />
       <LiveClock />
 
-      <div className="mx-auto max-w-2xl px-6 pb-24 pt-20 md:pt-28">
+      <div className="mx-auto max-w-2xl px-6 pb-16 pt-16 md:pt-24">
         {/* Hero */}
         <motion.div {...fadeUp} transition={{ duration: 0.5 }}>
-          <h1 className="text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
+          <h1 className="text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
             Omprakash Pawar
           </h1>
-          <p className="mt-1 text-lg italic text-muted-foreground">
+          <p className="mt-0.5 text-base font-serif italic text-muted-foreground">
             Full Stack Web Developer & Designer
           </p>
         </motion.div>
 
-        <motion.div {...fadeUp} transition={{ duration: 0.5, delay: 0.1 }} className="mt-8">
-          <p className="leading-relaxed text-foreground">
-            <em>Building scalable web applications</em>, making the digital
+        <motion.div {...fadeUp} transition={{ duration: 0.5, delay: 0.1 }} className="mt-5">
+          <p className="leading-relaxed text-foreground text-sm">
+            <em className="font-serif">Building scalable web applications</em>, making the digital
             experience powerful and user-friendly.
           </p>
-          <p className="mt-3 leading-relaxed text-foreground">
+          <p className="mt-2 leading-relaxed text-foreground text-sm">
             Currently freelancing and building{" "}
             <a
               href="https://www.godigiweb.site/"
               target="_blank"
               rel="noopener noreferrer"
-              className="underline underline-offset-2 hover:text-muted-foreground transition-colors"
+              className="font-serif italic underline underline-offset-2 hover:text-muted-foreground transition-colors"
             >
               GoDigiWeb
             </a>{" "}
@@ -48,17 +48,17 @@ const Index = () => {
               href="https://getstay.in"
               target="_blank"
               rel="noopener noreferrer"
-              className="underline underline-offset-2 hover:text-muted-foreground transition-colors"
+              className="font-serif italic underline underline-offset-2 hover:text-muted-foreground transition-colors"
             >
               GetStay.in
             </a>
             .
           </p>
-          <p className="mt-3 leading-relaxed text-foreground">
+          <p className="mt-2 leading-relaxed text-foreground text-sm">
             In the past I've worked as a Backend Developer at{" "}
             <a
               href="#"
-              className="underline underline-offset-2 hover:text-muted-foreground transition-colors"
+              className="font-serif italic underline underline-offset-2 hover:text-muted-foreground transition-colors"
             >
               Plixipy
             </a>{" "}
@@ -67,7 +67,7 @@ const Index = () => {
               href="https://atlyr.in"
               target="_blank"
               rel="noopener noreferrer"
-              className="underline underline-offset-2 hover:text-muted-foreground transition-colors"
+              className="font-serif italic underline underline-offset-2 hover:text-muted-foreground transition-colors"
             >
               Atlyr.in
             </a>
@@ -79,7 +79,7 @@ const Index = () => {
         <motion.div
           {...fadeUp}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-8 flex flex-wrap gap-3"
+          className="mt-5 flex flex-wrap gap-2"
         >
           <SocialPill label="GitHub" href="https://github.com/ompawar15" />
           <SocialPill
@@ -94,7 +94,7 @@ const Index = () => {
         </motion.div>
 
         {/* Three Column Grid */}
-        <div className="mt-16 grid grid-cols-1 gap-10 sm:grid-cols-3">
+        <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
           <SectionGroup
             heading="Building"
             delay={0.3}
@@ -154,14 +154,14 @@ const Index = () => {
         <motion.div
           {...fadeUp}
           transition={{ duration: 0.5, delay: 0.6 }}
-          className="mt-20"
+          className="mt-12"
         >
-          <h2 className="text-lg font-semibold tracking-tight text-foreground">
+          <h2 className="text-base font-semibold tracking-tight text-foreground">
             Who is Om?
           </h2>
-          <div className="mt-4 space-y-4 leading-relaxed text-foreground">
+          <div className="mt-2 space-y-2 leading-relaxed text-foreground text-sm">
             <p>
-              Hi! <em>I am Omprakash Pawar</em>, a Full-Stack Developer with 3
+              Hi! <em className="font-serif">I am Omprakash Pawar</em>, a Full-Stack Developer with 3
               years of experience building and deploying scalable web, real-time,
               and cloud applications.
             </p>
@@ -169,7 +169,7 @@ const Index = () => {
               I started my journey as a frontend developer and expanded to
               full-stack, working with JavaScript, TypeScript, Node.js, React,
               and AWS. Currently growing my expertise in{" "}
-              <em>AI/ML using Python</em>.
+              <em className="font-serif">AI/ML using Python</em>.
             </p>
           </div>
         </motion.div>
@@ -178,19 +178,19 @@ const Index = () => {
         <motion.div
           {...fadeUp}
           transition={{ duration: 0.5, delay: 0.7 }}
-          className="mt-16"
+          className="mt-10"
         >
-          <h2 className="text-lg font-semibold tracking-tight text-foreground">
+          <h2 className="text-base font-semibold tracking-tight text-foreground">
             What is Om doing?
           </h2>
-          <div className="mt-4 space-y-4 leading-relaxed text-foreground">
+          <div className="mt-2 space-y-2 leading-relaxed text-foreground text-sm">
             <p>
               Currently I'm building{" "}
               <a
                 href="https://getstay.in"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline underline-offset-2 hover:text-muted-foreground transition-colors"
+                className="font-serif italic underline underline-offset-2 hover:text-muted-foreground transition-colors"
               >
                 GetStay.in
               </a>
@@ -199,7 +199,7 @@ const Index = () => {
                 href="https://www.godigiweb.site/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline underline-offset-2 hover:text-muted-foreground transition-colors"
+                className="font-serif italic underline underline-offset-2 hover:text-muted-foreground transition-colors"
               >
                 GoDigiWeb
               </a>
@@ -220,12 +220,12 @@ const Index = () => {
         <motion.div
           {...fadeUp}
           transition={{ duration: 0.5, delay: 0.8 }}
-          className="mt-16"
+          className="mt-10"
         >
-          <h2 className="text-lg font-semibold tracking-tight text-foreground">
+          <h2 className="text-base font-semibold tracking-tight text-foreground">
             Skills
           </h2>
-          <div className="mt-4 space-y-2 text-sm leading-relaxed text-foreground">
+          <div className="mt-2 space-y-1 text-xs leading-relaxed text-foreground">
             <p>
               <span className="text-muted-foreground">Frontend:</span> React.js,
               Next.js, Redux, TailwindCSS
@@ -253,32 +253,32 @@ const Index = () => {
         <motion.div
           {...fadeUp}
           transition={{ duration: 0.5, delay: 0.9 }}
-          className="mt-20 border-t border-border pt-10"
+          className="mt-12 border-t border-border pt-8"
         >
-          <h2 className="text-lg font-semibold tracking-tight text-foreground">
+          <h2 className="text-base font-semibold tracking-tight text-foreground">
             Connect
           </h2>
-          <p className="mt-4 leading-relaxed text-foreground">
+          <p className="mt-2 leading-relaxed text-foreground text-sm">
             Reach me at{" "}
             <a
               href="https://github.com/ompawar15"
               target="_blank"
               rel="noopener noreferrer"
-              className="underline underline-offset-2 hover:text-muted-foreground transition-colors"
+              className="font-serif italic underline underline-offset-2 hover:text-muted-foreground transition-colors"
             >
               @ompawar15
             </a>{" "}
             ·{" "}
             <a
               href="mailto:om.pawar1512@gmail.com"
-              className="underline underline-offset-2 hover:text-muted-foreground transition-colors"
+              className="font-serif italic underline underline-offset-2 hover:text-muted-foreground transition-colors"
             >
               om.pawar1512@gmail.com
             </a>{" "}
             ·{" "}
             <a
               href="tel:+919522557828"
-              className="underline underline-offset-2 hover:text-muted-foreground transition-colors"
+              className="font-serif italic underline underline-offset-2 hover:text-muted-foreground transition-colors"
             >
               +91 9522557828
             </a>
@@ -289,7 +289,7 @@ const Index = () => {
         <motion.div
           {...fadeUp}
           transition={{ duration: 0.5, delay: 1.0 }}
-          className="mt-16 text-center text-sm text-muted-foreground"
+          className="mt-10 text-center text-xs text-muted-foreground"
         >
           Full Stack Web Developer & Designer
         </motion.div>
