@@ -120,6 +120,70 @@ const ThemeToggle = () => {
     runPixelTransition(nextTheme);
   }, [theme, transitioning, runPixelTransition]);
 
+  // Initial load animation
+  const hasPlayedIntro = useRef(false);
+  useEffect(() => {
+    if (hasPlayedIntro.current) return;
+    hasPlayedIntro.current = true;
+
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    canvas.width = w;
+    canvas.height = h;
+
+    const cols = Math.ceil(w / PIXEL_SIZE);
+    const rows = Math.ceil(h / PIXEL_SIZE);
+    const total = cols * rows;
+
+    const color = theme === "dark" ? "hsl(0 0% 7%)" : "hsl(0 0% 96%)";
+
+    // Start fully covered
+    ctx.fillStyle = color;
+    ctx.fillRect(0, 0, w, h);
+
+    const indices = Array.from({ length: total }, (_, i) => i);
+    for (let i = indices.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [indices[i], indices[j]] = [indices[j], indices[i]];
+    }
+
+    // Delay then clear pixels to reveal
+    setTimeout(() => {
+      const clearStart = performance.now();
+      const clearAnimate = (now: number) => {
+        const elapsed = now - clearStart;
+        const prog = Math.min(elapsed / (TRANSITION_DURATION * 1.2), 1);
+        const eased = 1 - Math.pow(1 - prog, 3);
+        const pixelsToClear = Math.floor(eased * total);
+
+        ctx.clearRect(0, 0, w, h);
+        ctx.fillStyle = color;
+
+        const remaining = total - pixelsToClear;
+        for (let i = 0; i < remaining; i++) {
+          const idx = indices[i];
+          const col = idx % cols;
+          const row = Math.floor(idx / cols);
+          ctx.fillRect(col * PIXEL_SIZE, row * PIXEL_SIZE, PIXEL_SIZE, PIXEL_SIZE);
+        }
+
+        if (prog < 1) {
+          rafRef.current = requestAnimationFrame(clearAnimate);
+        } else {
+          ctx.clearRect(0, 0, w, h);
+        }
+      };
+      rafRef.current = requestAnimationFrame(clearAnimate);
+    }, 300);
+
+    return () => cancelAnimationFrame(rafRef.current);
+  }, []);
+
   useEffect(() => {
     return () => cancelAnimationFrame(rafRef.current);
   }, []);
