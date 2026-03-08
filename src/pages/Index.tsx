@@ -16,6 +16,7 @@ const Index = () => {
     <div className="relative min-h-screen w-full bg-background transition-colors duration-500">
       <PixelTrail />
       <ThemeToggle />
+      <MusicPlayer />
       <LiveClock />
 
       <div className="mx-auto max-w-2xl px-6 pb-16 pt-16 md:pt-24">
