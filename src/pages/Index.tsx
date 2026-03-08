@@ -22,7 +22,7 @@ const Index = () => {
       <div className="relative z-[2] mx-auto max-w-2xl px-4 sm:px-6 pb-12 pt-12 md:pt-24">
         {/* Hero */}
         <motion.div {...fadeUp} transition={{ duration: 0.5 }}>
-          <h1 className="text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
+          <h1 className="text-xl sm:text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
             Omprakash Pawar
           </h1>
           <p className="mt-0.5 text-base font-serif italic text-muted-foreground">
