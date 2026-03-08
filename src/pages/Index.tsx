@@ -5,7 +5,6 @@ import { SectionGroup } from "@/components/SectionCard";
 import ThemeToggle from "@/components/ThemeToggle";
 import MusicPlayer from "@/components/MusicPlayer";
 import PixelTrail from "@/components/PixelTrail";
-import SnakeGame from "@/components/SnakeGame";
 
 const fadeUp = {
   initial: { opacity: 0, y: 20 },
@@ -288,16 +287,13 @@ const Index = () => {
           </p>
         </motion.div>
 
-        {/* Snake Game Footer */}
+        {/* Footer */}
         <motion.div
           {...fadeUp}
           transition={{ duration: 0.5, delay: 1.0 }}
-          className="mt-10"
+          className="mt-10 text-center text-xs text-muted-foreground"
         >
-          <SnakeGame />
-          <p className="mt-3 text-center text-xs text-muted-foreground">
-            Full Stack Web Developer & Designer
-          </p>
+          Full Stack Web Developer & Designer
         </motion.div>
       </div>
     </div>
