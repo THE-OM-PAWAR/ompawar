@@ -43,7 +43,165 @@ const Index = () => {
               className="font-serif italic font-normal underline underline-offset-2 hover:text-muted-foreground transition-colors"
             >
               GoDigiWeb
+            </LinkPreview>{" "}
+            and{" "}
+            <LinkPreview
+              href="https://getstay.in"
+              className="font-serif italic font-normal underline underline-offset-2 hover:text-muted-foreground transition-colors"
+            >
+              GetStay.in
             </LinkPreview>
+            .
+          </p>
+          <p className="mt-2 leading-relaxed text-foreground text-sm">
+            In the past I've worked as a Backend Developer at{" "}
+            <LinkPreview
+              href="#"
+              className="font-serif italic font-normal underline underline-offset-2 hover:text-muted-foreground transition-colors"
+            >
+              Plixipy
+            </LinkPreview>{" "}
+            and Frontend Developer at{" "}
+            <LinkPreview
+              href="https://atlyr.in"
+              className="font-serif italic font-normal underline underline-offset-2 hover:text-muted-foreground transition-colors"
+            >
+              Atlyr.in
+            </LinkPreview>
+            .
+          </p>
+        </motion.div>
+
+        {/* Social Pills */}
+        <motion.div
+          {...fadeUp}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mt-5 flex flex-wrap gap-2"
+        >
+          <SocialPill label="GitHub" href="https://github.com/THE-OM-PAWAR" />
+          <SocialPill
+            label="LinkedIn"
+            href="https://www.linkedin.com/in/ompawar15/"
+          />
+          <SocialPill
+            label="Resume"
+            href="/resume.pdf"
+          />
+          <SocialPill label="Contact" href="mailto:ompawar.work@gmail.com" />
+        </motion.div>
+
+        {/* Three Column Grid */}
+        <div className="mt-8 md:mt-10 grid grid-cols-3 gap-4 sm:gap-6">
+          <SectionGroup
+            heading="Building"
+            delay={0.3}
+            items={[
+              {
+                title: "Oplus AI",
+                subtitle: "Tiktok for games — I am co-founder here.",
+                href: "https://playoplus.in",
+                aiEnabled: true,
+              },
+              {
+                title: "GoDigiWeb",
+                subtitle: "Helping businesses scale with custom web & cloud solutions.",
+                href: "https://www.godigiweb.site/",
+              },
+              {
+                title: "GetStay.in",
+                subtitle: "Hostel & PG management software plus directory.",
+                href: "https://getstay.in",
+              },
+            ]}
+          />
+          <SectionGroup
+            heading="Work"
+            delay={0.4}
+            items={[
+              {
+                title: "Freelancing",
+                subtitle: "Web solutions for gym owners with membership & payment features.",
+              },
+              {
+                title: "Plixipy",
+                subtitle: "Backend Developer — APIs, DB optimization, server-side features.",
+              },
+              {
+                title: "Atlyr.in",
+                subtitle: "Frontend Developer — website UI & functionalities alongside IITians.",
+                href: "https://atlyr.in",
+              },
+            ]}
+          />
+          <SectionGroup
+            heading="Projects"
+            delay={0.5}
+            items={[
+              {
+                title: "Real-time Chat App",
+                subtitle: "Socket.io, Node.js, React",
+              },
+              {
+                title: "Hospital Management System",
+                subtitle: "Real-time with LLM integration & custom Figma UI/UX.",
+              },
+              {
+                title: "ERPNext on AWS",
+                subtitle: "Independently deployed large-scale ERP on cloud infrastructure.",
+              },
+            ]}
+          />
+        </div>
+
+        {/* About */}
+        <motion.div
+          {...fadeUp}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          className="mt-12"
+        >
+          <h2 className="text-base font-semibold tracking-tight text-foreground">
+            Who is Om?
+          </h2>
+          <div className="mt-2 space-y-2 leading-relaxed text-foreground text-sm">
+            <p>
+              Hi! <em className="font-serif font-normal">I am Omprakash Pawar</em>, a Full-Stack Developer with 3
+              years of experience building and deploying scalable web, real-time,
+              and cloud applications.
+            </p>
+            <p>
+              I started my journey as a frontend developer and expanded to
+              full-stack, working with JavaScript, TypeScript, Node.js, React,
+              and AWS. Currently growing my expertise in{" "}
+              <em className="font-serif font-normal">AI/ML using Python</em>.
+            </p>
+          </div>
+        </motion.div>
+
+        {/* What is Om doing */}
+        <motion.div
+          {...fadeUp}
+          transition={{ duration: 0.5, delay: 0.7 }}
+          className="mt-10"
+        >
+          <h2 className="text-base font-semibold tracking-tight text-foreground">
+            What is Om doing?
+          </h2>
+          <div className="mt-2 space-y-2 leading-relaxed text-foreground text-sm">
+            <p>
+              Currently I'm building{" "}
+              <LinkPreview
+                href="https://getstay.in"
+                className="font-serif italic font-normal underline underline-offset-2 hover:text-muted-foreground transition-colors"
+              >
+                GetStay.in
+              </LinkPreview>
+              , a hostel & PG management platform, and scaling businesses through{" "}
+              <LinkPreview
+                href="https://www.godigiweb.site/"
+                className="font-serif italic font-normal underline underline-offset-2 hover:text-muted-foreground transition-colors"
+              >
+                GoDigiWeb
+              </LinkPreview>
               .
             </p>
             <p>
@@ -101,14 +259,12 @@ const Index = () => {
           </h2>
           <p className="mt-2 leading-relaxed text-foreground text-sm">
             Reach me at{" "}
-            <a
+            <LinkPreview
               href="https://github.com/THE-OM-PAWAR"
-              target="_blank"
-              rel="noopener noreferrer"
               className="font-serif italic font-normal underline underline-offset-2 hover:text-muted-foreground transition-colors"
             >
               @ompawar15
-            </a>{" "}
+            </LinkPreview>{" "}
             ·{" "}
             <a
               href="mailto:ompawar.work@gmail.com"
