@@ -8,6 +8,7 @@ const MusicPlayer = () => {
   useEffect(() => {
     audioRef.current = new Audio("/music.mp3");
     audioRef.current.loop = true;
+    audioRef.current.volume = 0.5;
     return () => {
       audioRef.current?.pause();
       audioRef.current = null;
