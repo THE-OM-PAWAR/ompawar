@@ -89,6 +89,13 @@
   }
 }
 
+@layer base {
+  em, i, .italic {
+    font-family: var(--font-italic);
+    font-style: italic;
+  }
+}
+
 /* Arrow Dots Button Styles */
 .button05 {
   --dot-size: 3px;
