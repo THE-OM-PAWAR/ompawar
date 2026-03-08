@@ -83,16 +83,16 @@ const Index = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mt-5 flex flex-wrap gap-2"
         >
-          <SocialPill label="GitHub" href="https://github.com/ompawar15" />
+          <SocialPill label="GitHub" href="https://github.com/THE-OM-PAWAR" />
           <SocialPill
             label="LinkedIn"
-            href="https://linkedin.com/in/omprakash-pawar"
+            href="https://www.linkedin.com/in/ompawar15/"
           />
           <SocialPill
-            label="Portfolio"
-            href="https://the-om-pawar.github.io/developer/"
+            label="Resume"
+            href="/resume.pdf"
           />
-          <SocialPill label="Contact" href="mailto:om.pawar1512@gmail.com" />
+          <SocialPill label="Contact" href="mailto:ompawar.work@gmail.com" />
         </motion.div>
 
         {/* Three Column Grid */}
@@ -269,7 +269,7 @@ const Index = () => {
           <p className="mt-2 leading-relaxed text-foreground text-sm">
             Reach me at{" "}
             <a
-              href="https://github.com/ompawar15"
+              href="https://github.com/THE-OM-PAWAR"
               target="_blank"
               rel="noopener noreferrer"
               className="font-serif italic font-normal underline underline-offset-2 hover:text-muted-foreground transition-colors"
@@ -278,10 +278,10 @@ const Index = () => {
             </a>{" "}
             ·{" "}
             <a
-              href="mailto:om.pawar1512@gmail.com"
+              href="mailto:ompawar.work@gmail.com"
               className="font-serif italic font-normal underline underline-offset-2 hover:text-muted-foreground transition-colors"
             >
-              om.pawar1512@gmail.com
+              ompawar.work@gmail.com
             </a>{" "}
             ·{" "}
             <a
