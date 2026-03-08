@@ -83,16 +83,16 @@ const Index = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mt-5 flex flex-wrap gap-2"
         >
-          <SocialPill label="GitHub" href="https://github.com/ompawar15" />
+          <SocialPill label="GitHub" href="https://github.com/THE-OM-PAWAR" />
           <SocialPill
             label="LinkedIn"
-            href="https://linkedin.com/in/omprakash-pawar"
+            href="https://www.linkedin.com/in/ompawar15/"
           />
           <SocialPill
-            label="Portfolio"
-            href="https://the-om-pawar.github.io/developer/"
+            label="Resume"
+            href="/resume.pdf"
           />
-          <SocialPill label="Contact" href="mailto:om.pawar1512@gmail.com" />
+          <SocialPill label="Contact" href="mailto:ompawar.work@gmail.com" />
         </motion.div>
 
         {/* Three Column Grid */}
