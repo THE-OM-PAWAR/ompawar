@@ -9,10 +9,10 @@ interface SectionCardProps {
 const SectionCard = ({ title, subtitle, href }: SectionCardProps) => {
   const content = (
     <div className="group">
-      <h3 className="text-sm font-medium text-foreground group-hover:underline underline-offset-2">
+      <h3 className="text-xs sm:text-sm font-medium text-foreground group-hover:underline underline-offset-2">
         {title}
       </h3>
-      <p className="mt-1 text-sm text-muted-foreground">{subtitle}</p>
+      <p className="mt-1 text-xs sm:text-sm text-muted-foreground">{subtitle}</p>
     </div>
   );
 
