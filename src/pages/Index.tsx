@@ -131,6 +131,11 @@ const Index = () => {
                 subtitle: "Frontend Developer — website UI & functionalities alongside IITians.",
                 href: "https://atlyr.in",
               },
+              {
+                title: "1:1 Mentorship",
+                subtitle: "Get 1:1 webdev & AIML mentorship on Unstop.",
+                href: "https://unstop.com/mentor/Ompawar?ref=OTLpd6kI",
+              },
             ]}
           />
           <SectionGroup
