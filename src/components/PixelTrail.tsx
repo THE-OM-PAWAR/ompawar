@@ -122,8 +122,8 @@ const PixelTrail = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="pointer-events-none fixed inset-0"
-      style={{ imageRendering: "pixelated", zIndex: -1 }}
+      className="pointer-events-none fixed inset-0 z-[1]"
+      style={{ imageRendering: "pixelated" }}
     />
   );
 };
