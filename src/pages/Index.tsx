@@ -278,10 +278,10 @@ const Index = () => {
             </a>{" "}
             ·{" "}
             <a
-              href="mailto:om.pawar1512@gmail.com"
+              href="mailto:ompawar.work@gmail.com"
               className="font-serif italic font-normal underline underline-offset-2 hover:text-muted-foreground transition-colors"
             >
-              om.pawar1512@gmail.com
+              ompawar.work@gmail.com
             </a>{" "}
             ·{" "}
             <a
