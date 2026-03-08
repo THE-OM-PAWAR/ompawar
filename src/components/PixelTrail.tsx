@@ -3,15 +3,16 @@ import { useEffect, useRef, useCallback } from "react";
 const PIXEL_SIZE = 6;
 const TRAIL_LENGTH = 35;
 const SPAWN_INTERVAL = 16;
+const FADE_DELAY = 100; // ms after cursor stops before fading begins
 
 const BLUE_PALETTE = [
-  "rgba(59, 130, 246, 0.9)",   // blue-500
-  "rgba(96, 165, 250, 0.8)",   // blue-400
-  "rgba(37, 99, 235, 0.85)",   // blue-600
-  "rgba(147, 197, 253, 0.7)",  // blue-300
-  "rgba(29, 78, 216, 0.8)",    // blue-700
-  "rgba(191, 219, 254, 0.6)",  // blue-200
-  "rgba(59, 130, 246, 0.5)",   // blue-500 faded
+  "rgba(59, 130, 246, 0.9)",
+  "rgba(96, 165, 250, 0.8)",
+  "rgba(37, 99, 235, 0.85)",
+  "rgba(147, 197, 253, 0.7)",
+  "rgba(29, 78, 216, 0.8)",
+  "rgba(191, 219, 254, 0.6)",
+  "rgba(59, 130, 246, 0.5)",
 ];
 
 interface Pixel {
@@ -30,6 +31,8 @@ const PixelTrail = () => {
   const mouseRef = useRef({ x: 0, y: 0 });
   const lastSpawnRef = useRef(0);
   const rafRef = useRef<number>(0);
+  const isMovingRef = useRef(false);
+  const moveTimeoutRef = useRef<number>(0);
 
   const animate = useCallback(() => {
     const canvas = canvasRef.current;
@@ -40,7 +43,9 @@ const PixelTrail = () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     const now = Date.now();
-    if (now - lastSpawnRef.current > SPAWN_INTERVAL) {
+
+    // Only spawn new pixels when cursor is moving
+    if (isMovingRef.current && now - lastSpawnRef.current > SPAWN_INTERVAL) {
       const count = 2 + Math.floor(Math.random() * 2);
       for (let i = 0; i < count; i++) {
         const life = 20 + Math.floor(Math.random() * 25);
@@ -96,6 +101,11 @@ const PixelTrail = () => {
 
     const onMove = (e: MouseEvent) => {
       mouseRef.current = { x: e.clientX, y: e.clientY };
+      isMovingRef.current = true;
+      clearTimeout(moveTimeoutRef.current);
+      moveTimeoutRef.current = window.setTimeout(() => {
+        isMovingRef.current = false;
+      }, FADE_DELAY);
     };
     window.addEventListener("mousemove", onMove);
 
@@ -105,13 +115,14 @@ const PixelTrail = () => {
       window.removeEventListener("resize", resize);
       window.removeEventListener("mousemove", onMove);
       cancelAnimationFrame(rafRef.current);
+      clearTimeout(moveTimeoutRef.current);
     };
   }, [animate]);
 
   return (
     <canvas
       ref={canvasRef}
-      className="pointer-events-none fixed inset-0 z-[9997]"
+      className="pointer-events-none fixed inset-0 z-[1]"
       style={{ imageRendering: "pixelated" }}
     />
   );
