@@ -19,7 +19,7 @@ const Index = () => {
       <MusicPlayer />
       <LiveClock />
 
-      <div className="relative z-[2] mx-auto max-w-2xl px-4 sm:px-6 pb-12 pt-12 md:pt-24">
+      <div className="relative z-[2] mx-auto max-w-2xl px-6 sm:px-8 pb-16 pt-16 md:pt-32">
         {/* Hero */}
         <motion.div {...fadeUp} transition={{ duration: 0.5 }}>
           <h1 className="text-xl sm:text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
