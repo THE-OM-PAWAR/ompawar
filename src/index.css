@@ -120,10 +120,11 @@
   background: var(--bg-color);
   transform: scaleX(0);
   transform-origin: left;
+  transition: transform var(--duration) cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .button01:hover .button01_bg-mid {
-  transform: scaleX(0);
+  transform: scaleX(1);
 }
 
 .button01_bg-right {
@@ -231,9 +232,10 @@
   font-weight: 500;
   color: var(--text-color);
   clip-path: inset(0 100% 0 0);
+  transition: clip-path var(--duration) cubic-bezier(0.22, 1, 0.36, 1);
   padding: 10px 20px;
 }
 
 .button01:hover .button01_inner::after {
-  clip-path: inset(0 100% 0 0);
+  clip-path: inset(0 0 0 0);
 }
