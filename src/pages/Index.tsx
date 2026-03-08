@@ -25,14 +25,14 @@ const Index = () => {
           <h1 className="text-xl sm:text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
             Omprakash Pawar
           </h1>
-          <p className="mt-0.5 text-sm sm:text-base font-serif italic font-bold text-muted-foreground">
+          <p className="mt-0.5 text-sm sm:text-base font-serif italic font-semibold text-muted-foreground">
             Full Stack Web Developer & Designer
           </p>
         </motion.div>
 
         <motion.div {...fadeUp} transition={{ duration: 0.5, delay: 0.1 }} className="mt-5">
           <p className="leading-relaxed text-foreground text-sm">
-            <em className="font-serif font-bold">Building scalable web applications</em>, making the digital
+            <em className="font-serif font-semibold">Building scalable web applications</em>, making the digital
             experience powerful and user-friendly.
           </p>
           <p className="mt-2 leading-relaxed text-foreground text-sm">
@@ -41,7 +41,7 @@ const Index = () => {
               href="https://www.godigiweb.site/"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-serif italic font-bold underline underline-offset-2 hover:text-muted-foreground transition-colors"
+              className="font-serif italic font-semibold underline underline-offset-2 hover:text-muted-foreground transition-colors"
             >
               GoDigiWeb
             </a>{" "}
@@ -50,7 +50,7 @@ const Index = () => {
               href="https://getstay.in"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-serif italic font-bold underline underline-offset-2 hover:text-muted-foreground transition-colors"
+              className="font-serif italic font-semibold underline underline-offset-2 hover:text-muted-foreground transition-colors"
             >
               GetStay.in
             </a>
@@ -60,7 +60,7 @@ const Index = () => {
             In the past I've worked as a Backend Developer at{" "}
             <a
               href="#"
-              className="font-serif italic font-bold underline underline-offset-2 hover:text-muted-foreground transition-colors"
+              className="font-serif italic font-semibold underline underline-offset-2 hover:text-muted-foreground transition-colors"
             >
               Plixipy
             </a>{" "}
@@ -69,7 +69,7 @@ const Index = () => {
               href="https://atlyr.in"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-serif italic font-bold underline underline-offset-2 hover:text-muted-foreground transition-colors"
+              className="font-serif italic font-semibold underline underline-offset-2 hover:text-muted-foreground transition-colors"
             >
               Atlyr.in
             </a>
@@ -163,7 +163,7 @@ const Index = () => {
           </h2>
           <div className="mt-2 space-y-2 leading-relaxed text-foreground text-sm">
             <p>
-              Hi! <em className="font-serif font-bold">I am Omprakash Pawar</em>, a Full-Stack Developer with 3
+              Hi! <em className="font-serif font-semibold">I am Omprakash Pawar</em>, a Full-Stack Developer with 3
               years of experience building and deploying scalable web, real-time,
               and cloud applications.
             </p>
@@ -171,7 +171,7 @@ const Index = () => {
               I started my journey as a frontend developer and expanded to
               full-stack, working with JavaScript, TypeScript, Node.js, React,
               and AWS. Currently growing my expertise in{" "}
-              <em className="font-serif font-bold">AI/ML using Python</em>.
+              <em className="font-serif font-semibold">AI/ML using Python</em>.
             </p>
           </div>
         </motion.div>
@@ -192,7 +192,7 @@ const Index = () => {
                 href="https://getstay.in"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-serif italic font-bold underline underline-offset-2 hover:text-muted-foreground transition-colors"
+                className="font-serif italic font-semibold underline underline-offset-2 hover:text-muted-foreground transition-colors"
               >
                 GetStay.in
               </a>
@@ -201,7 +201,7 @@ const Index = () => {
                 href="https://www.godigiweb.site/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-serif italic font-bold underline underline-offset-2 hover:text-muted-foreground transition-colors"
+                className="font-serif italic font-semibold underline underline-offset-2 hover:text-muted-foreground transition-colors"
               >
                 GoDigiWeb
               </a>
@@ -266,21 +266,21 @@ const Index = () => {
               href="https://github.com/ompawar15"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-serif italic font-bold underline underline-offset-2 hover:text-muted-foreground transition-colors"
+              className="font-serif italic font-semibold underline underline-offset-2 hover:text-muted-foreground transition-colors"
             >
               @ompawar15
             </a>{" "}
             ·{" "}
             <a
               href="mailto:om.pawar1512@gmail.com"
-              className="font-serif italic font-bold underline underline-offset-2 hover:text-muted-foreground transition-colors"
+              className="font-serif italic font-semibold underline underline-offset-2 hover:text-muted-foreground transition-colors"
             >
               om.pawar1512@gmail.com
             </a>{" "}
             ·{" "}
             <a
               href="tel:+919522557828"
-              className="font-serif italic font-bold underline underline-offset-2 hover:text-muted-foreground transition-colors"
+              className="font-serif italic font-semibold underline underline-offset-2 hover:text-muted-foreground transition-colors"
             >
               +91 9522557828
             </a>
