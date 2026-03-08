@@ -5,6 +5,7 @@ import { SectionGroup } from "@/components/SectionCard";
 import ThemeToggle from "@/components/ThemeToggle";
 import MusicPlayer from "@/components/MusicPlayer";
 import PixelTrail from "@/components/PixelTrail";
+import SnakeGame from "@/components/SnakeGame";
 
 const fadeUp = {
   initial: { opacity: 0, y: 20 },
