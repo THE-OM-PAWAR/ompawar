@@ -25,7 +25,7 @@ const Index = () => {
           <h1 className="text-xl sm:text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
             Omprakash Pawar
           </h1>
-          <p className="mt-0.5 text-base font-serif italic text-muted-foreground">
+          <p className="mt-0.5 text-sm sm:text-base font-serif italic text-muted-foreground">
             Full Stack Web Developer & Designer
           </p>
         </motion.div>

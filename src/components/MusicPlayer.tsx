@@ -28,7 +28,7 @@ const MusicPlayer = () => {
   return (
     <motion.button
       onClick={toggle}
-      className="fixed bottom-6 right-[4.5rem] z-[9999] flex h-9 w-9 items-center justify-center rounded-full border border-border bg-background text-foreground shadow-sm transition-colors hover:bg-muted"
+      className="fixed bottom-4 right-[3.5rem] sm:bottom-6 sm:right-[4.5rem] z-[9999] flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full border border-border bg-background text-foreground shadow-sm transition-colors hover:bg-muted"
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       aria-label={playing ? "Pause music" : "Play music"}
