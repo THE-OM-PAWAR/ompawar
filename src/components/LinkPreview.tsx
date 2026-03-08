@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface LinkPreviewProps {
   href: string;
@@ -13,9 +14,10 @@ const LinkPreview = ({ href, children, className, target = "_blank", rel = "noop
   const [position, setPosition] = useState<"above" | "below">("above");
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const linkRef = useRef<HTMLAnchorElement>(null);
+  const isMobile = useIsMobile();
 
   const isExternal = href.startsWith("http");
-  const isPreviewable = isExternal && !href.startsWith("mailto:") && !href.startsWith("tel:");
+  const isPreviewable = isExternal && !href.startsWith("mailto:") && !href.startsWith("tel:") && !isMobile;
 
   const handleMouseEnter = () => {
     if (!isPreviewable) return;
