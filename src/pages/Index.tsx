@@ -102,6 +102,12 @@ const Index = () => {
             delay={0.3}
             items={[
               {
+                title: "Oplus AI",
+                subtitle: "Tiktok for games — I am co-founder here.",
+                href: "https://playoplus.in",
+                aiEnabled: true,
+              },
+              {
                 title: "GoDigiWeb",
                 subtitle: "Helping businesses scale with custom web & cloud solutions.",
                 href: "https://www.godigiweb.site/",
@@ -136,12 +142,6 @@ const Index = () => {
             heading="Projects"
             delay={0.5}
             items={[
-              {
-                title: "Oplus AI",
-                subtitle: "Tiktok for games — I am co-founder here.",
-                href: "https://playoplus.in",
-                aiEnabled: true,
-              },
               {
                 title: "Real-time Chat App",
                 subtitle: "Socket.io, Node.js, React",
