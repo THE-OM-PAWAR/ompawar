@@ -1,4 +1,4 @@
-import { FlowButton } from "@/components/ui/flow-button";
+import { ArrowDotsButton } from "@/components/ui/arrow-dots-button";
 
 interface SocialPillProps {
   label: string;
@@ -7,7 +7,7 @@ interface SocialPillProps {
 
 const SocialPill = ({ label, href }: SocialPillProps) => {
   return (
-    <FlowButton text={label} href={href} target="_blank" rel="noopener noreferrer" />
+    <ArrowDotsButton text={label} href={href} target="_blank" rel="noopener noreferrer" />
   );
 };
 
