@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import LiveClock from "@/components/LiveClock";
 import SocialPill from "@/components/SocialPill";
 import { SectionGroup } from "@/components/SectionCard";
+import ThemeToggle from "@/components/ThemeToggle";
+import PixelTrail from "@/components/PixelTrail";
 
 const fadeUp = {
   initial: { opacity: 0, y: 20 },
@@ -10,7 +12,9 @@ const fadeUp = {
 
 const Index = () => {
   return (
-    <div className="relative min-h-screen w-full bg-background">
+    <div className="relative min-h-screen w-full bg-background transition-colors duration-500">
+      <PixelTrail />
+      <ThemeToggle />
       <LiveClock />
 
       <div className="mx-auto max-w-2xl px-6 pb-24 pt-20 md:pt-28">
