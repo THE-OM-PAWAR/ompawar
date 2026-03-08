@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import LiveClock from "@/components/LiveClock";
 import SocialPill from "@/components/SocialPill";
 import { SectionGroup } from "@/components/SectionCard";
+import ThemeToggle from "@/components/ThemeToggle";
+import PixelTrail from "@/components/PixelTrail";
 
 const fadeUp = {
   initial: { opacity: 0, y: 20 },
