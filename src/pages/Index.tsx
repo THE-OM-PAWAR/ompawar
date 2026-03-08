@@ -32,7 +32,7 @@ const Index = () => {
 
         <motion.div {...fadeUp} transition={{ duration: 0.5, delay: 0.1 }} className="mt-5">
           <p className="leading-relaxed text-foreground text-sm">
-            <em className="font-serif">Building scalable web applications</em>, making the digital
+            <em className="font-serif font-bold">Building scalable web applications</em>, making the digital
             experience powerful and user-friendly.
           </p>
           <p className="mt-2 leading-relaxed text-foreground text-sm">
