@@ -8,7 +8,7 @@ export function FlowButton({ text = "Modern Button", href, target, rel }: { text
   return (
     <Comp
       {...linkProps}
-      className="group relative flex items-center gap-1 overflow-hidden rounded-[100px] border-[1.5px] border-foreground/40 bg-transparent px-8 py-3 text-sm font-semibold text-foreground cursor-pointer transition-all duration-[600ms] ease-[cubic-bezier(0.23,1,0.32,1)] hover:border-transparent hover:text-primary-foreground hover:rounded-[12px] active:scale-[0.95] no-underline"
+      className="group relative flex items-center gap-1 overflow-hidden rounded-[100px] border-[1.5px] border-foreground/40 bg-transparent px-6 py-2 text-xs font-semibold text-foreground cursor-pointer transition-all duration-[600ms] ease-[cubic-bezier(0.23,1,0.32,1)] hover:border-transparent hover:text-primary-foreground hover:rounded-[10px] active:scale-[0.95] no-underline"
     >
       {/* Left arrow */}
       <ArrowRight
