@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -38,7 +38,6 @@
 
     --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
     --font-mono: 'JetBrains Mono', ui-monospace, monospace;
-    --font-italic: 'Old Standard TT', Georgia, serif;
   }
 
   .dark {
@@ -86,13 +85,6 @@
 @layer utilities {
   .font-mono {
     font-family: var(--font-mono);
-  }
-}
-
-@layer base {
-  em, i, .italic {
-    font-family: var(--font-italic);
-    font-style: italic;
   }
 }
 
