@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
+import LinkPreview from "@/components/LinkPreview";
 import {
   Tooltip,
   TooltipContent,
