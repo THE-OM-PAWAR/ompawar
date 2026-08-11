@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
 import LinkPreview from "@/components/LinkPreview";
 import {
@@ -54,22 +53,19 @@ interface SectionGroupProps {
   heading: string;
   items: SectionCardProps[];
   delay?: number;
+  id?: string;
 }
 
-const SectionGroup = ({ heading, items, delay = 0 }: SectionGroupProps) => {
+const SectionGroup = ({ heading, items, id }: SectionGroupProps) => {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay }}
-    >
+    <div id={id} className="scroll-mt-28">
       <h2 className="mb-4 text-sm font-medium text-muted-foreground">{heading}</h2>
       <div className="space-y-5">
         {items.map((item, i) => (
           <SectionCard key={i} {...item} />
         ))}
       </div>
-    </motion.div>
+    </div>
   );
 };
 

@@ -48,7 +48,7 @@ const PixelTrail = () => {
     if (isMovingRef.current && now - lastSpawnRef.current > SPAWN_INTERVAL) {
       const count = 2 + Math.floor(Math.random() * 2);
       for (let i = 0; i < count; i++) {
-        const life = 20 + Math.floor(Math.random() * 25);
+        const life = 100 + Math.floor(Math.random() * 25);
         pixelsRef.current.push({
           x: mouseRef.current.x,
           y: mouseRef.current.y,

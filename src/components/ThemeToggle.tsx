@@ -3,7 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Sun, Moon } from "lucide-react";
 
 const PIXEL_SIZE = 12;
-const TRANSITION_DURATION = 600; // ms
+const COVER_DURATION = 400; // ms to cover screen with new theme pixels
+const REVEAL_DURATION = 550; // ms to dissolve pixels revealing text & components
 
 const ThemeToggle = () => {
   const [theme, setTheme] = useState<"light" | "dark">(() => {
@@ -13,7 +14,6 @@ const ThemeToggle = () => {
     return "light";
   });
   const [transitioning, setTransitioning] = useState(false);
-  const [overlayTheme, setOverlayTheme] = useState<"light" | "dark">("light");
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const rafRef = useRef<number>(0);
 
@@ -37,91 +37,92 @@ const ThemeToggle = () => {
     const rows = Math.ceil(h / PIXEL_SIZE);
     const total = cols * rows;
 
-    // Create shuffled indices
-    const indices = Array.from({ length: total }, (_, i) => i);
-    for (let i = indices.length - 1; i > 0; i--) {
+    // Create shuffled indices for cover phase
+    const coverIndices = Array.from({ length: total }, (_, i) => i);
+    for (let i = coverIndices.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [indices[i], indices[j]] = [indices[j], indices[i]];
+      [coverIndices[i], coverIndices[j]] = [coverIndices[j], coverIndices[i]];
     }
 
-    const color = nextTheme === "dark" ? "hsl(0 0% 7%)" : "hsl(0 0% 96%)";
-    const startTime = performance.now();
-    let themeSwitched = false;
+    const nextColor = nextTheme === "dark" ? "hsl(0 0% 7%)" : "hsl(0 0% 96%)";
+    const startCoverTime = performance.now();
 
-    const animate = (now: number) => {
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed / TRANSITION_DURATION, 1);
-
-      // Ease-out cubic
+    // Phase 1: Pixels build up covering the page
+    const animateCover = (now: number) => {
+      const elapsed = now - startCoverTime;
+      const progress = Math.min(elapsed / COVER_DURATION, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
       const pixelsToShow = Math.floor(eased * total);
 
-      ctx.fillStyle = color;
+      ctx.clearRect(0, 0, w, h);
+      ctx.fillStyle = nextColor;
       for (let i = 0; i < pixelsToShow; i++) {
-        const idx = indices[i];
+        const idx = coverIndices[i];
         const col = idx % cols;
         const row = Math.floor(idx / cols);
         ctx.fillRect(col * PIXEL_SIZE, row * PIXEL_SIZE, PIXEL_SIZE, PIXEL_SIZE);
       }
 
-      // Switch theme at ~60% fill
-      if (!themeSwitched && progress > 0.6) {
-        themeSwitched = true;
-        setTheme(nextTheme);
-      }
-
       if (progress < 1) {
-        rafRef.current = requestAnimationFrame(animate);
+        rafRef.current = requestAnimationFrame(animateCover);
       } else {
-        // Hold briefly then fade out by clearing
-        setTimeout(() => {
-          // Reverse: remove pixels
-          const clearStart = performance.now();
-          const clearIndices = [...indices].reverse();
+        // Screen is 100% covered. Switch theme underneath completely invisibly!
+        ctx.fillStyle = nextColor;
+        ctx.fillRect(0, 0, w, h);
+        setTheme(nextTheme);
 
-          const clearAnimate = (now2: number) => {
-            const elapsed2 = now2 - clearStart;
-            const prog2 = Math.min(elapsed2 / (TRANSITION_DURATION * 0.6), 1);
+        // Brief delay then start Phase 2: Pixel dissolve reveal
+        setTimeout(() => {
+          // Shuffled indices for reveal phase
+          const revealIndices = Array.from({ length: total }, (_, i) => i);
+          for (let i = revealIndices.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [revealIndices[i], revealIndices[j]] = [revealIndices[j], revealIndices[i]];
+          }
+
+          const startRevealTime = performance.now();
+
+          const animateReveal = (now2: number) => {
+            const elapsed2 = now2 - startRevealTime;
+            const prog2 = Math.min(elapsed2 / REVEAL_DURATION, 1);
             const eased2 = 1 - Math.pow(1 - prog2, 3);
+            const pixelsToClear = Math.floor(eased2 * total);
 
             ctx.clearRect(0, 0, w, h);
-            // Fade from 100% down to 20% opacity
-            const opacity = 1 - eased2 * 0.8;
-            ctx.globalAlpha = opacity;
-            ctx.fillStyle = color;
+            ctx.fillStyle = nextColor;
 
-            for (let i = 0; i < total; i++) {
-              const idx = indices[i];
+            const remaining = total - pixelsToClear;
+            for (let i = 0; i < remaining; i++) {
+              const idx = revealIndices[i];
               const col = idx % cols;
               const row = Math.floor(idx / cols);
               ctx.fillRect(col * PIXEL_SIZE, row * PIXEL_SIZE, PIXEL_SIZE, PIXEL_SIZE);
             }
-            ctx.globalAlpha = 1;
 
             if (prog2 < 1) {
-              rafRef.current = requestAnimationFrame(clearAnimate);
+              rafRef.current = requestAnimationFrame(animateReveal);
             } else {
               ctx.clearRect(0, 0, w, h);
               setTransitioning(false);
             }
           };
-          rafRef.current = requestAnimationFrame(clearAnimate);
-        }, 100);
+
+          rafRef.current = requestAnimationFrame(animateReveal);
+        }, 40);
       }
     };
 
-    rafRef.current = requestAnimationFrame(animate);
+    rafRef.current = requestAnimationFrame(animateCover);
   }, []);
 
   const toggleTheme = useCallback(() => {
     if (transitioning) return;
     const nextTheme = theme === "light" ? "dark" : "light";
-    setOverlayTheme(nextTheme);
     setTransitioning(true);
     runPixelTransition(nextTheme);
   }, [theme, transitioning, runPixelTransition]);
 
-  // Initial load animation
+  // Initial load pixel reveal animation
   const hasPlayedIntro = useRef(false);
   useEffect(() => {
     if (hasPlayedIntro.current) return;
@@ -153,12 +154,12 @@ const ThemeToggle = () => {
       [indices[i], indices[j]] = [indices[j], indices[i]];
     }
 
-    // Delay then clear pixels to reveal
+    // Delay then clear pixels to reveal text & elements
     setTimeout(() => {
       const clearStart = performance.now();
       const clearAnimate = (now: number) => {
         const elapsed = now - clearStart;
-        const prog = Math.min(elapsed / (TRANSITION_DURATION * 1.2), 1);
+        const prog = Math.min(elapsed / REVEAL_DURATION, 1);
         const eased = 1 - Math.pow(1 - prog, 3);
         const pixelsToClear = Math.floor(eased * total);
 
@@ -180,7 +181,7 @@ const ThemeToggle = () => {
         }
       };
       rafRef.current = requestAnimationFrame(clearAnimate);
-    }, 300);
+    }, 250);
 
     return () => cancelAnimationFrame(rafRef.current);
   }, []);
