@@ -39,8 +39,8 @@ const getInitialNodes = (): Record<ViewId, CanvasNode> => {
 
   return {
     home: { id: "home", title: "Home View", x: 0, y: 0 },
-    projects: { id: "projects", title: "Projects Showcase", x: spacingX, y: 0 },
-    building: { id: "building", title: "Building & Ventures", x: 0, y: spacingY },
+    projects: { id: "projects", title: "Projects Showcase", x: spacingX, y: -spacingY },
+    building: { id: "building", title: "Building & Ventures", x: -spacingX, y: spacingY },
     skills: { id: "skills", title: "Skills & Technical Stack", x: spacingX, y: spacingY },
     about: { id: "about", title: "About Section", x: 0, y: spacingY * 2 },
     contact: { id: "contact", title: "Contact Section", x: spacingX, y: spacingY * 2 },
@@ -109,8 +109,8 @@ export const CanvasTransitionProvider: React.FC<{ children: React.ReactNode }> =
               ? "DIAGONAL DOWN-RIGHT ↘"
               : "DIAGONAL UP-RIGHT ↗"
             : dy > 0
-            ? "DIAGONAL DOWN-LEFT ↙"
-            : "DIAGONAL UP-LEFT ↖";
+              ? "DIAGONAL DOWN-LEFT ↙"
+              : "DIAGONAL UP-LEFT ↖";
       }
 
       const duration = Math.min(Math.max(Math.round(distance * 0.38), 500), 750);

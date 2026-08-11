@@ -229,48 +229,6 @@ const FloatingDock = () => {
     return () => cancelAnimationFrame(rafRef.current);
   }, []);
 
-  // Music Player logic
-  const [playing, setPlaying] = useState(false);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-
-  useEffect(() => {
-    const audio = new Audio("/music.mp3");
-    audio.loop = true;
-    audio.volume = 0.5;
-    audioRef.current = audio;
-
-    audio
-      .play()
-      .then(() => setPlaying(true))
-      .catch(() => {
-        const startOnInteraction = () => {
-          audio
-            .play()
-            .then(() => setPlaying(true))
-            .catch(() => {});
-          document.removeEventListener("click", startOnInteraction);
-          document.removeEventListener("keydown", startOnInteraction);
-        };
-        document.addEventListener("click", startOnInteraction);
-        document.addEventListener("keydown", startOnInteraction);
-      });
-
-    return () => {
-      audio.pause();
-      audioRef.current = null;
-    };
-  }, []);
-
-  const toggleMusic = () => {
-    if (!audioRef.current) return;
-    if (playing) {
-      audioRef.current.pause();
-    } else {
-      audioRef.current.play();
-    }
-    setPlaying(!playing);
-  };
-
   const { transitionTo, currentView } = useCanvasTransition();
 
   const handleNavClick = (sectionId: string) => {
@@ -370,38 +328,6 @@ const FloatingDock = () => {
               )}
             </motion.div>
           </AnimatePresence>
-        </DockButton>
-
-        {/* Music Player Button */}
-        <DockButton
-          label={playing ? "Pause Music" : "Play Music"}
-          onClick={toggleMusic}
-        >
-          <div className="flex items-center justify-center gap-[3px] h-4 w-4">
-            {[0, 1, 2, 3].map((i) => (
-              <motion.span
-                key={i}
-                className="w-[2.5px] rounded-full bg-foreground"
-                animate={
-                  playing
-                    ? {
-                        height: ["4px", "14px", "6px", "10px", "4px"],
-                      }
-                    : { height: "4px" }
-                }
-                transition={
-                  playing
-                    ? {
-                        duration: 0.8,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                        delay: i * 0.15,
-                      }
-                    : { duration: 0.3 }
-                }
-              />
-            ))}
-          </div>
         </DockButton>
 
         {/* Theme Toggle Button */}

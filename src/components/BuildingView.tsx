@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ArrowLeft, Sparkles, ExternalLink } from "lucide-react";
 import { useCanvasTransition } from "@/context/CanvasTransitionContext";
 import LinkPreview from "@/components/LinkPreview";
+import FeaturePosterCard from "@/components/FeaturePosterCard";
 import {
   Tooltip,
   TooltipContent,
@@ -69,7 +70,16 @@ const BuildingView = () => {
 
   return (
     <div className="relative min-h-screen w-full bg-background transition-colors duration-500">
-      <div className="relative z-[2] mx-auto max-w-2xl px-8 sm:px-10 pb-20 pt-20 md:pt-40">
+      <div className="relative z-[2] mx-auto max-w-2xl px-8 sm:px-10 pb-20 pt-20 md:pt-28">
+        {/* Left Bottom Feature Card */}
+        <div className="hidden xl:block absolute -left-60 2xl:-left-72 bottom-20 w-52 2xl:w-60 pointer-events-auto">
+          <FeaturePosterCard
+            imageSrc="/_.jpeg"
+            headline="Building community cloud"
+            linkText="godigiweb.site"
+            href="https://www.godigiweb.site/"
+          />
+        </div>
         {/* Header & Navigation */}
         <div>
           <button

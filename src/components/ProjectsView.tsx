@@ -100,7 +100,7 @@ const ProjectsView = () => {
 
   return (
     <div className="relative min-h-screen w-full bg-background transition-colors duration-500">
-      <div className="relative z-[2] mx-auto max-w-2xl px-8 sm:px-10 pb-20 pt-20 md:pt-40">
+      <div className="relative z-[2] mx-auto max-w-2xl px-8 sm:px-10 pb-20 pt-20 md:pt-28">
         {/* Top Header & Navigation */}
         <div>
           <button

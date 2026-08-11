@@ -1,12 +1,14 @@
 import FloatingDock from "@/components/FloatingDock";
 import LiveClock from "@/components/LiveClock";
 import SocialPill from "@/components/SocialPill";
-import { SectionGroup } from "@/components/SectionCard";
+import { SectionCard, SectionGroup } from "@/components/SectionCard";
 import PixelTrail from "@/components/PixelTrail";
 import LinkPreview from "@/components/LinkPreview";
 import SectionNav, { SectionItem } from "@/components/SectionNav";
-import { CanvasTransitionProvider } from "@/context/CanvasTransitionContext";
+import { CanvasTransitionProvider, useCanvasTransition } from "@/context/CanvasTransitionContext";
 import CanvasViewport from "@/components/CanvasViewport";
+import { ArrowUpRight } from "lucide-react";
+import FeaturePosterCard from "@/components/FeaturePosterCard";
 
 const sections: SectionItem[] = [
   { id: "hero", label: "Intro" },
@@ -20,8 +22,28 @@ const sections: SectionItem[] = [
 ];
 
 const IndexContent = () => {
+  const { transitionTo } = useCanvasTransition();
   return (
-    <div className="relative z-[2] mx-auto max-w-2xl px-8 sm:px-10 pb-20 pt-20 md:pt-40">
+    <div className="relative z-[2] mx-auto max-w-2xl px-8 sm:px-10 pb-20 pt-20 md:pt-32">
+      {/* Top Left Image Box */}
+      <div className="hidden lg:block absolute -left-28 lg:-left-32 xl:-left-36 top-20 md:top-36 w-28 lg:w-36 pointer-events-auto">
+        <img
+          src="/pixel-avatar.png"
+          alt="Omprakash Pawar Workspace"
+          className="w-full h-auto object-cover rounded-none"
+        />
+      </div>
+
+      {/* Bottom Right Feature Card - beside main content */}
+      <div className="hidden xl:block absolute -right-60 2xl:-right-72 bottom-20 w-52 2xl:w-60 pointer-events-auto">
+        <FeaturePosterCard
+          videoSrc="/1786485448727994.mp4"
+          headline="Style inspiration, curated daily."
+          linkText="klickpin.com"
+          href="https://klickpin.com"
+        />
+      </div>
+
       {/* Hero */}
       <div id="hero" className="scroll-mt-28">
         <h1 className="text-xl sm:text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
@@ -87,72 +109,59 @@ const IndexContent = () => {
         <SocialPill label="Contact" href="mailto:ompawar.work@gmail.com" />
       </div>
 
-      {/* Three Column Grid */}
-      <div className="mt-8 md:mt-10 grid grid-cols-3 gap-4 sm:gap-6">
-        <SectionGroup
-          id="building"
-          heading="Building"
-          items={[
-            {
-              title: "Oplus AI",
-              subtitle: "Tiktok for games — I am co-founder here.",
-              href: "https://playoplus.in",
-              aiEnabled: true,
-            },
-            {
-              title: "GoDigiWeb",
-              subtitle: "Helping businesses scale with custom web & cloud solutions.",
-              href: "https://www.godigiweb.site/",
-            },
-            {
-              title: "GetStay.in",
-              subtitle: "Hostel & PG management software plus directory.",
-              href: "https://getstay.in",
-            },
-          ]}
-        />
-        <SectionGroup
-          id="work"
-          heading="Work"
-          items={[
-            {
-              title: "Freelancing",
-              subtitle: "Web solutions for gym owners with membership & payment features.",
-            },
-            {
-              title: "Plixipy",
-              subtitle: "Backend Developer — APIs, DB optimization, server-side features.",
-            },
-            {
-              title: "Atlyr.in",
-              subtitle: "Frontend Developer — website UI & functionalities alongside IITians.",
-              href: "https://atlyr.in",
-            },
-            {
-              title: "1:1 Mentorship",
-              subtitle: "Get 1:1 webdev & AIML mentorship on Unstop.",
-              href: "https://unstop.com/mentor/Ompawar?ref=OTLpd6kI",
-            },
-          ]}
-        />
-        <SectionGroup
-          id="projects"
-          heading="Projects"
-          items={[
-            {
-              title: "Real-time Chat App",
-              subtitle: "Socket.io, Node.js, React",
-            },
-            {
-              title: "Hospital Management System",
-              subtitle: "Real-time with LLM integration & custom Figma UI/UX.",
-            },
-            {
-              title: "ERPNext on AWS",
-              subtitle: "Independently deployed large-scale ERP on cloud infrastructure.",
-            },
-          ]}
-        />
+      {/* Building Section */}
+      <div id="building" className="mt-12 scroll-mt-28">
+        <button
+          onClick={() => transitionTo("building")}
+          className="group inline-flex items-center gap-1 text-base font-semibold tracking-tight text-foreground hover:text-muted-foreground transition-colors"
+        >
+          Building
+          <ArrowUpRight size={14} className="text-muted-foreground group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+        </button>
+        <p className="mt-2 leading-relaxed text-foreground text-sm">
+          Currently co-founding{" "}
+          <LinkPreview href="https://playoplus.in" className="font-serif italic font-normal underline underline-offset-2 hover:text-muted-foreground transition-colors">
+            Oplus AI
+          </LinkPreview>
+          {" "}— a TikTok for games platform with AI-driven discovery. Also building{" "}
+          <LinkPreview href="https://www.godigiweb.site/" className="font-serif italic font-normal underline underline-offset-2 hover:text-muted-foreground transition-colors">
+            GoDigiWeb
+          </LinkPreview>
+          {" "}for custom web & cloud solutions, and{" "}
+          <LinkPreview href="https://getstay.in" className="font-serif italic font-normal underline underline-offset-2 hover:text-muted-foreground transition-colors">
+            GetStay.in
+          </LinkPreview>
+          {" "}for hostel & PG management.
+        </p>
+      </div>
+
+      {/* Work Section */}
+      <div id="work" className="mt-10 scroll-mt-28">
+        <h2 className="text-base font-semibold tracking-tight text-foreground">Work</h2>
+        <div className="mt-3 flex flex-wrap gap-x-8 gap-y-4">
+          {[
+            { title: "Freelancing", subtitle: "Web solutions for gym owners with membership & payment features." },
+            { title: "Plixipy", subtitle: "Backend Developer — APIs, DB optimization, server-side features." },
+            { title: "Atlyr.in", subtitle: "Frontend Developer — website UI & functionalities alongside IITians.", href: "https://atlyr.in" },
+            { title: "1:1 Mentorship", subtitle: "Get 1:1 webdev & AIML mentorship on Unstop.", href: "https://unstop.com/mentor/Ompawar?ref=OTLpd6kI" },
+          ].map((item, i) => (
+            <SectionCard key={i} {...item} />
+          ))}
+        </div>
+      </div>
+
+      {/* Projects Section */}
+      <div id="projects" className="mt-10 scroll-mt-28">
+        <h2 className="text-base font-semibold tracking-tight text-foreground">Projects</h2>
+        <div className="mt-3 flex flex-wrap gap-x-8 gap-y-4">
+          {[
+            { title: "Real-time Chat App", subtitle: "Socket.io, Node.js, React" },
+            { title: "Hospital Management System", subtitle: "Real-time with LLM integration & custom Figma UI/UX." },
+            { title: "ERPNext on AWS", subtitle: "Independently deployed large-scale ERP on cloud infrastructure." },
+          ].map((item, i) => (
+            <SectionCard key={i} {...item} />
+          ))}
+        </div>
       </div>
 
       {/* About */}
