@@ -1,7 +1,7 @@
 import { useEffect, useRef, useCallback } from "react";
 
-const PIXEL_SIZE = 6;
-const TRAIL_LENGTH = 35;
+const PIXEL_SIZE = 5;
+const TRAIL_LENGTH = 36;
 const SPAWN_INTERVAL = 16;
 const FADE_DELAY = 100; // ms after cursor stops before fading begins
 

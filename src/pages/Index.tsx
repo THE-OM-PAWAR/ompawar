@@ -4,34 +4,25 @@ import SocialPill from "@/components/SocialPill";
 import { SectionCard, SectionGroup } from "@/components/SectionCard";
 import PixelTrail from "@/components/PixelTrail";
 import LinkPreview from "@/components/LinkPreview";
-import SectionNav, { SectionItem } from "@/components/SectionNav";
 import { CanvasTransitionProvider, useCanvasTransition } from "@/context/CanvasTransitionContext";
 import CanvasViewport from "@/components/CanvasViewport";
 import { ArrowUpRight } from "lucide-react";
 import FeaturePosterCard from "@/components/FeaturePosterCard";
 
-const sections: SectionItem[] = [
-  { id: "hero", label: "Intro" },
-  { id: "building", label: "Building" },
-  { id: "work", label: "Work" },
-  { id: "projects", label: "Projects" },
-  { id: "about", label: "Who is Om?" },
-  { id: "doing", label: "What is Om doing?" },
-  { id: "skills", label: "Skills" },
-  { id: "connect", label: "Connect" },
-];
 
 const IndexContent = () => {
   const { transitionTo } = useCanvasTransition();
   return (
     <div className="relative z-[2] mx-auto max-w-2xl px-8 sm:px-10 pb-20 pt-20 md:pt-32">
-      {/* Top Left Image Box */}
-      <div className="hidden lg:block absolute -left-28 lg:-left-32 xl:-left-36 top-20 md:top-36 w-28 lg:w-36 pointer-events-auto">
-        <img
-          src="/pixel-avatar.png"
-          alt="Omprakash Pawar Workspace"
-          className="w-full h-auto object-cover rounded-none"
-        />
+      {/* Top Left Avatar Box (Anchored on right, grows to left on hover) */}
+      <div className="hidden lg:block absolute right-full -mr-2 lg:-mr-2 xl:-mr-2 top-18 md:top-34 pointer-events-auto z-20">
+        <div className="w-16 lg:w-18 hover:w-32 lg:hover:w-36 aspect-square transition-all duration-300 ease-out overflow-hidden">
+          <img
+            src="/pixel-avatar.png"
+            alt="Omprakash Pawar"
+            className="w-full h-full object-cover rounded-none"
+          />
+        </div>
       </div>
 
       {/* Bottom Right Feature Card - beside main content */}
@@ -50,48 +41,30 @@ const IndexContent = () => {
           Omprakash Pawar
         </h1>
         <p className="mt-0.5 text-sm sm:text-base font-serif italic font-normal text-muted-foreground">
-          Full Stack Web Developer & Designer
+          AI Backend Engineer & Product Builder
         </p>
       </div>
 
-      <div className="mt-5">
+      <div className="mt-4 space-y-2">
         <p className="leading-relaxed text-foreground text-sm">
-          <em className="font-serif font-normal">Building scalable web applications</em>, making the digital
-          experience powerful and user-friendly.
+          Building production-ready AI applications, backend systems, and scalable web products from architecture to deployment.
         </p>
-        <p className="mt-2 leading-relaxed text-foreground text-sm">
-          Currently freelancing and building{" "}
-          <LinkPreview
-            href="https://www.godigiweb.site/"
-            className="font-serif italic font-normal underline underline-offset-2 hover:text-muted-foreground transition-colors"
-          >
-            GoDigiWeb
-          </LinkPreview>{" "}
-          and{" "}
+        <p className="leading-relaxed text-foreground text-sm">
+          Currently building{" "}
           <LinkPreview
             href="https://getstay.in"
             className="font-serif italic font-normal underline underline-offset-2 hover:text-muted-foreground transition-colors"
           >
             GetStay.in
-          </LinkPreview>
-          .
-        </p>
-        <p className="mt-2 leading-relaxed text-foreground text-sm">
-          In the past I've worked as a Backend Developer at{" "}
-          <LinkPreview
-            href="#"
-            className="font-serif italic font-normal underline underline-offset-2 hover:text-muted-foreground transition-colors"
-          >
-            Plixipy
           </LinkPreview>{" "}
-          and Frontend Developer at{" "}
+          and{" "}
           <LinkPreview
-            href="https://atlyr.in"
+            href="https://www.godigiweb.site/"
             className="font-serif italic font-normal underline underline-offset-2 hover:text-muted-foreground transition-colors"
           >
-            Atlyr.in
+            GoDigiWeb
           </LinkPreview>
-          .
+          , focused on AI agents and cloud infrastructure.
         </p>
       </div>
 
@@ -119,48 +92,108 @@ const IndexContent = () => {
           <ArrowUpRight size={14} className="text-muted-foreground group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
         </button>
         <p className="mt-2 leading-relaxed text-foreground text-sm">
-          Currently co-founding{" "}
-          <LinkPreview href="https://playoplus.in" className="font-serif italic font-normal underline underline-offset-2 hover:text-muted-foreground transition-colors">
-            Oplus AI
-          </LinkPreview>
-          {" "}— a TikTok for games platform with AI-driven discovery. Also building{" "}
-          <LinkPreview href="https://www.godigiweb.site/" className="font-serif italic font-normal underline underline-offset-2 hover:text-muted-foreground transition-colors">
-            GoDigiWeb
-          </LinkPreview>
-          {" "}for custom web & cloud solutions, and{" "}
+          Currently building{" "}
           <LinkPreview href="https://getstay.in" className="font-serif italic font-normal underline underline-offset-2 hover:text-muted-foreground transition-colors">
             GetStay.in
           </LinkPreview>
-          {" "}for hostel & PG management.
+          {" "}— a hostel marketplace operating in Bhopal with 50+ hostels (Top 8 Eo-gSEA startup), and{" "}
+          <LinkPreview href="https://www.godigiweb.site/" className="font-serif italic font-normal underline underline-offset-2 hover:text-muted-foreground transition-colors">
+            GoDigiWeb
+          </LinkPreview>
+          {" "}— a software development & business growth agency.
         </p>
       </div>
 
       {/* Work Section */}
       <div id="work" className="mt-10 scroll-mt-28">
         <h2 className="text-base font-semibold tracking-tight text-foreground">Work</h2>
-        <div className="mt-3 flex flex-wrap gap-x-8 gap-y-4">
+        <div className="mt-3.5 space-y-4 pl-1 border-l border-border/40 ml-0.5">
           {[
-            { title: "Freelancing", subtitle: "Web solutions for gym owners with membership & payment features." },
-            { title: "Plixipy", subtitle: "Backend Developer — APIs, DB optimization, server-side features." },
-            { title: "Atlyr.in", subtitle: "Frontend Developer — website UI & functionalities alongside IITians.", href: "https://atlyr.in" },
-            { title: "1:1 Mentorship", subtitle: "Get 1:1 webdev & AIML mentorship on Unstop.", href: "https://unstop.com/mentor/Ompawar?ref=OTLpd6kI" },
+            {
+              title: "Software Engineer & TA @ Sheryians Coding School",
+              subtitle: "Build production software & mentor students in Full-Stack, Backend & Python.",
+              href: "https://sheryians.com/",
+            },
+            {
+              title: "Frontend Developer Intern @ Atlyr.in (3 months)",
+              subtitle: "Owned major parts of website UI & Studio experience, working with core engineering.",
+              href: "https://atlyr.app",
+            },
+            {
+              title: "Backend Developer Intern @ Plixipy (3 months)",
+              subtitle: "Built production APIs, DB workflows & server-side features with hands-on optimization.",
+              href: "https://www.linkedin.com/company/plixipy/posts/?feedView=all",
+            },
+            {
+              title: "Technology Intern @ Silov Solutions",
+              subtitle: "Developed & maintained company website, improved UI/UX functionality & SEO performance.",
+              href: "https://silovsolutions.com/",
+            },
+            {
+              title: "Full-Stack & Mobile Architect @ Xpert Homecare",
+              subtitle: "Built Xpert management dashboard & dual React Native apps (doctors/delivery agents & patients) with real-time Socket.io bookings.",
+              href: "https://xperthomecare.com/",
+            },
+            {
+              title: "Hackathons & Awards",
+              subtitle: "2nd Runner-Up out of 3,000+ teams across India at Google Lakecity Hackathon & 2nd Runner-Up @ Fibohack.",
+            },
           ].map((item, i) => (
-            <SectionCard key={i} {...item} />
+            <div key={i} className="pl-3">
+              <SectionCard {...item} />
+            </div>
           ))}
         </div>
       </div>
 
       {/* Projects Section */}
       <div id="projects" className="mt-10 scroll-mt-28">
-        <h2 className="text-base font-semibold tracking-tight text-foreground">Projects</h2>
-        <div className="mt-3 flex flex-wrap gap-x-8 gap-y-4">
-          {[
-            { title: "Real-time Chat App", subtitle: "Socket.io, Node.js, React" },
-            { title: "Hospital Management System", subtitle: "Real-time with LLM integration & custom Figma UI/UX." },
-            { title: "ERPNext on AWS", subtitle: "Independently deployed large-scale ERP on cloud infrastructure." },
-          ].map((item, i) => (
-            <SectionCard key={i} {...item} />
-          ))}
+        <button
+          onClick={() => transitionTo("projects")}
+          className="group inline-flex items-center gap-1 text-base font-semibold tracking-tight text-foreground hover:text-muted-foreground transition-colors"
+        >
+          Projects
+          <ArrowUpRight size={14} className="text-muted-foreground group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+        </button>
+        <p className="mt-2 leading-relaxed text-foreground text-sm">
+          Currently, I am working on a <em className="font-serif font-normal">Voice Agent</em> project which is designed to feel completely natural to human nature and conversational speed. I also created <em className="font-serif font-normal">CloudOne CLI</em> — a CLI dev tool for CI/CD pipelines, GitHub integration, and Vercel-like deployment dashboards, along with a few more projects.{" "}
+          <button
+            onClick={() => transitionTo("projects")}
+            className="font-serif italic font-normal underline underline-offset-2 hover:text-muted-foreground transition-colors text-foreground inline-flex items-center gap-0.5"
+          >
+            view more →
+          </button>
+        </p>
+      </div>
+
+      {/* Skills Section */}
+      <div id="skills" className="mt-10 scroll-mt-28">
+        <button
+          onClick={() => transitionTo("skills")}
+          className="group inline-flex items-center gap-1 text-base font-semibold tracking-tight text-foreground hover:text-muted-foreground transition-colors"
+        >
+          Skills
+          <ArrowUpRight size={14} className="text-muted-foreground group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+        </button>
+        <div className="mt-2 space-y-1 text-xs leading-relaxed text-foreground">
+          <p>
+            <span className="text-muted-foreground">AI & ML:</span> Python, FastAPI, Pydantic, LLM APIs, LangGraph, LangChain, MCP
+          </p>
+          <p>
+            <span className="text-muted-foreground">DevOps:</span> AWS (EC2, S3), Docker, Terraform, Jenkins, GitHub CI/CD
+          </p>
+          <p>
+            <span className="text-muted-foreground">Backend:</span> Node.js, Express.js, FastAPI, Python, BullMQ, Socket.io
+          </p>
+          <p>
+            <span className="text-muted-foreground">Frontend:</span> React.js, Next.js, Redux, TypeScript, TailwindCSS
+          </p>
+          <p>
+            <span className="text-muted-foreground">Databases:</span> MongoDB, PostgreSQL, Redis
+          </p>
+          <p>
+            <span className="text-muted-foreground">Design:</span> Figma (wireframes, prototypes)
+          </p>
         </div>
       </div>
 
@@ -171,15 +204,10 @@ const IndexContent = () => {
         </h2>
         <div className="mt-2 space-y-2 leading-relaxed text-foreground text-sm">
           <p>
-            Hi! <em className="font-serif font-normal">I am Omprakash Pawar</em>, a Full-Stack Developer with 3
-            years of experience building and deploying scalable web, real-time,
-            and cloud applications.
+            Hi! I’m <em className="font-serif font-normal">Omprakash Pawar</em>, an <em className="font-serif font-normal">AI Backend Engineer & Product Builder</em> building production-ready AI applications, backend systems, and scalable products.
           </p>
           <p>
-            I started my journey as a frontend developer and expanded to
-            full-stack, working with JavaScript, TypeScript, Node.js, React,
-            and AWS. Currently growing my expertise in{" "}
-            <em className="font-serif font-normal">AI/ML using Python</em>.
+            I started with frontend development and grew into full-stack and backend engineering, working with <em className="font-serif font-normal">Node.js, Python, FastAPI, PostgreSQL, Redis, Docker, and AWS</em>. Today, I focus on <em className="font-serif font-normal">LLMs, AI agents, voice AI, LangGraph, LangChain, and AI infrastructure</em>.
           </p>
         </div>
       </div>
@@ -191,58 +219,24 @@ const IndexContent = () => {
         </h2>
         <div className="mt-2 space-y-2 leading-relaxed text-foreground text-sm">
           <p>
-            Currently I'm building{" "}
+            Currently, I’m building{" "}
             <LinkPreview
               href="https://getstay.in"
               className="font-serif italic font-normal underline underline-offset-2 hover:text-muted-foreground transition-colors"
             >
               GetStay.in
-            </LinkPreview>
-            , a hostel & PG management platform, and scaling businesses through{" "}
+            </LinkPreview>{" "}
+            and{" "}
             <LinkPreview
               href="https://www.godigiweb.site/"
               className="font-serif italic font-normal underline underline-offset-2 hover:text-muted-foreground transition-colors"
             >
               GoDigiWeb
             </LinkPreview>
-            .
+            , working across AI, backend engineering, product development, and cloud infrastructure.
           </p>
           <p>
-            Participating in hackathons, winning with innovative projects like
-            event management software and real-time collaboration tools.
-          </p>
-          <p>
-            Learning Python for AI/ML — exploring machine learning foundations
-            and Agentic AI.
-          </p>
-        </div>
-      </div>
-
-      {/* Skills */}
-      <div id="skills" className="mt-10 scroll-mt-28">
-        <h2 className="text-base font-semibold tracking-tight text-foreground">
-          Skills
-        </h2>
-        <div className="mt-2 space-y-1 text-xs leading-relaxed text-foreground">
-          <p>
-            <span className="text-muted-foreground">Frontend:</span> React.js,
-            Next.js, Redux, TailwindCSS
-          </p>
-          <p>
-            <span className="text-muted-foreground">Backend:</span> Node.js,
-            Express.js, REST APIs, Socket.io
-          </p>
-          <p>
-            <span className="text-muted-foreground">Databases:</span> MongoDB,
-            PostgreSQL
-          </p>
-          <p>
-            <span className="text-muted-foreground">DevOps:</span> AWS (EC2,
-            S3), Docker, GitHub CI/CD, ERPNext
-          </p>
-          <p>
-            <span className="text-muted-foreground">Design:</span> Figma
-            (wireframes, prototypes)
+            I’m focused on building <em className="font-serif font-normal">AI agents and production-grade AI systems</em>, while exploring new ideas across AI, software, and startups.
           </p>
         </div>
       </div>
@@ -255,7 +249,7 @@ const IndexContent = () => {
         <p className="mt-2 leading-relaxed text-foreground text-sm">
           Reach me at{" "}
           <LinkPreview
-            href="https://github.com/THE-OM-PAWAR"
+            href="https://www.linkedin.com/in/ompawar15/"
             className="font-serif italic font-normal underline underline-offset-2 hover:text-muted-foreground transition-colors"
           >
             @ompawar15
@@ -292,7 +286,6 @@ const Index = () => {
         <PixelTrail />
         <FloatingDock />
         <LiveClock />
-        <SectionNav sections={sections} />
         <CanvasViewport homeContent={<IndexContent />} />
       </div>
     </CanvasTransitionProvider>

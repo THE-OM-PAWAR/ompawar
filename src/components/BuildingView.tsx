@@ -1,84 +1,88 @@
-import { useState } from "react";
-import { ArrowLeft, Sparkles, ExternalLink } from "lucide-react";
+import { ArrowLeft, ExternalLink, Linkedin } from "lucide-react";
 import { useCanvasTransition } from "@/context/CanvasTransitionContext";
 import LinkPreview from "@/components/LinkPreview";
 import FeaturePosterCard from "@/components/FeaturePosterCard";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 
 interface BuildingItem {
   id: string;
   title: string;
   role: string;
-  category: "startup" | "saas" | "agency";
   subtitle: string;
   description: string;
-  tags: string[];
   href?: string;
-  aiEnabled?: boolean;
+  linkedin?: string;
 }
 
 const BUILDING_ITEMS: BuildingItem[] = [
   {
-    id: "oplus-ai",
-    title: "Oplus AI",
-    role: "Co-Founder & Lead Engineer",
-    category: "startup",
-    subtitle: "Tiktok for games — AI-driven gaming clips & discovery platform",
+    id: "getstay",
+    title: "GetStay.in",
+    role: "Founder & Creator",
+    subtitle: "Hostel accommodation marketplace for students & working professionals",
     description:
-      "Co-founded and engineered an interactive gaming clip platform with AI video recommendation models, creator dashboards, and high-engagement clip streams.",
-    tags: ["React", "AI / ML", "Python", "Node.js", "AWS"],
-    href: "https://playoplus.in",
-    aiEnabled: true,
+      "A marketplace for hostels designed for students and working professionals to find accommodation. Selected among the Top 8 Startups of EO-GSEA, currently operating in Bhopal and working with over 50+ hostels in Bhopal.",
+    href: "https://getstay.in",
+    linkedin: "https://www.linkedin.com/company/getstay",
   },
   {
     id: "godigiweb",
     title: "GoDigiWeb",
     role: "Founder & Lead Solutions Architect",
-    category: "agency",
-    subtitle: "Helping businesses scale with custom web & cloud architecture",
+    subtitle: "Software development & business growth agency",
     description:
-      "Founding web agency scaling local and regional businesses with custom web portals, membership management, payment gateways, and cloud deployment.",
-    tags: ["React", "Node.js", "AWS EC2", "Docker", "TailwindCSS"],
+      "A software development and business growth agency working with over 15+ businesses, delivering custom software solutions and digital support to them.",
     href: "https://www.godigiweb.site/",
-  },
-  {
-    id: "getstay",
-    title: "GetStay.in",
-    role: "Founder & Creator",
-    category: "saas",
-    subtitle: "Hostel & PG management software plus student discovery directory",
-    description:
-      "Created a full-stack SaaS property management platform for hostel and PG owners combined with a student discovery directory.",
-    tags: ["Next.js", "TypeScript", "PostgreSQL", "TailwindCSS"],
-    href: "https://getstay.in",
+    linkedin: "https://www.linkedin.com/company/godigiweb",
   },
 ];
 
 const BuildingView = () => {
   const { transitionTo } = useCanvasTransition();
-  const [filter, setFilter] = useState<"all" | "startup" | "saas" | "agency">("all");
-
-  const filteredItems = BUILDING_ITEMS.filter((item) => {
-    if (filter === "all") return true;
-    return item.category === filter;
-  });
 
   return (
     <div className="relative min-h-screen w-full bg-background transition-colors duration-500">
       <div className="relative z-[2] mx-auto max-w-2xl px-8 sm:px-10 pb-20 pt-20 md:pt-28">
         {/* Left Bottom Feature Card */}
-        <div className="hidden xl:block absolute -left-60 2xl:-left-72 bottom-20 w-52 2xl:w-60 pointer-events-auto">
+        <div className="hidden xl:block absolute -left-64 2xl:-left-76 bottom-16 w-60 2xl:w-68 pointer-events-auto">
           <FeaturePosterCard
             imageSrc="/_.jpeg"
-            headline="Building community cloud"
-            linkText="godigiweb.site"
-            href="https://www.godigiweb.site/"
-          />
+            headline="Building Community Cloud Platform"
+          >
+            <div className="text-[11px] text-muted-foreground leading-relaxed flex flex-col gap-2 mt-1 font-sans">
+              <p>
+                Converting a bare-metal PC into a full-fledged, high-availability VPS & cloud infrastructure capable of hosting web apps, databases, and microservices.
+              </p>
+              <div className="pt-2 border-t border-border/40 text-[10px] text-foreground/90 space-y-1">
+                <p className="font-semibold text-foreground">Seeking Contributors & Collaborators!</p>
+                <p className="text-muted-foreground leading-normal">
+                  Want to collaborate or build together? Reach out via{" "}
+                  <a
+                    href="https://www.linkedin.com/in/ompawar15/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline hover:text-foreground transition-colors font-serif italic"
+                  >
+                    LinkedIn
+                  </a>
+                  ,{" "}
+                  <a
+                    href="mailto:ompawar.work@gmail.com"
+                    className="underline hover:text-foreground transition-colors font-serif italic"
+                  >
+                    Email
+                  </a>
+                  , or DM at{" "}
+                  <a
+                    href="tel:+919522557828"
+                    className="underline hover:text-foreground transition-colors font-serif italic"
+                  >
+                    +91 9522557828
+                  </a>
+                  .
+                </p>
+              </div>
+            </div>
+          </FeaturePosterCard>
         </div>
         {/* Header & Navigation */}
         <div>
@@ -98,65 +102,38 @@ const BuildingView = () => {
           </p>
         </div>
 
-        {/* Category Filters */}
-        <div className="mt-6 flex flex-wrap gap-2">
-          {[
-            { id: "all", label: "All Ventures" },
-            { id: "startup", label: "Startups" },
-            { id: "saas", label: "SaaS Platforms" },
-            { id: "agency", label: "Agency Solutions" },
-          ].map((cat) => {
-            const active = filter === cat.id;
-            return (
-              <button
-                key={cat.id}
-                onClick={() => setFilter(cat.id as any)}
-                className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
-                  active
-                    ? "bg-foreground text-background"
-                    : "border border-border bg-background text-muted-foreground hover:text-foreground hover:bg-muted"
-                }`}
-              >
-                {cat.label}
-              </button>
-            );
-          })}
-        </div>
-
         {/* Building List */}
         <div className="mt-8 space-y-8">
-          {filteredItems.map((item) => (
+          {BUILDING_ITEMS.map((item) => (
             <div key={item.id} className="group">
-              <div className="flex items-start justify-between gap-3">
-                <div>
-                  <div className="flex items-center gap-2">
-                    <h2 className="text-sm sm:text-base font-medium text-foreground group-hover:underline underline-offset-2">
+              <div>
+                <div className="flex items-center gap-2.5">
+                  {item.href ? (
+                    <LinkPreview href={item.href}>
+                      <h2 className="text-sm sm:text-base font-medium text-foreground hover:underline underline-offset-2 inline-flex items-center gap-1.5">
+                        <span>{item.title}</span>
+                        <ExternalLink size={13} className="text-muted-foreground" />
+                      </h2>
+                    </LinkPreview>
+                  ) : (
+                    <h2 className="text-sm sm:text-base font-medium text-foreground">
                       {item.title}
                     </h2>
-                    {item.aiEnabled && (
-                      <TooltipProvider delayDuration={0}>
-                        <Tooltip>
-                          <TooltipTrigger asChild>
-                            <Sparkles className="w-3.5 h-3.5 text-muted-foreground hover:text-foreground transition-colors cursor-pointer" />
-                          </TooltipTrigger>
-                          <TooltipContent side="top" className="text-xs">
-                            AI enabled platform
-                          </TooltipContent>
-                        </Tooltip>
-                      </TooltipProvider>
-                    )}
-                  </div>
-                  <p className="text-xs text-muted-foreground mt-0.5">{item.role}</p>
-                </div>
+                  )}
 
-                {item.href && (
-                  <LinkPreview href={item.href}>
-                    <span className="text-xs text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1 font-serif italic">
-                      <span>Visit</span>
-                      <ExternalLink size={12} />
-                    </span>
-                  </LinkPreview>
-                )}
+                  {item.linkedin && (
+                    <a
+                      href={item.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title={`${item.title} LinkedIn Page`}
+                      className="text-muted-foreground hover:text-foreground transition-colors inline-flex items-center p-0.5 rounded hover:bg-muted"
+                    >
+                      <Linkedin size={14} />
+                    </a>
+                  )}
+                </div>
+                <p className="text-xs text-muted-foreground mt-0.5">{item.role}</p>
               </div>
 
               <p className="mt-2 text-xs font-serif italic text-foreground font-normal">
@@ -165,18 +142,6 @@ const BuildingView = () => {
               <p className="mt-1.5 text-xs text-muted-foreground leading-relaxed">
                 {item.description}
               </p>
-
-              {/* Tags */}
-              <div className="mt-3 flex flex-wrap gap-1.5">
-                {item.tags.map((tag, tIdx) => (
-                  <span
-                    key={tIdx}
-                    className="px-2 py-0.5 text-[11px] font-mono text-muted-foreground bg-muted/40 rounded border border-border/40"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
             </div>
           ))}
         </div>
@@ -196,3 +161,4 @@ const BuildingView = () => {
 };
 
 export default BuildingView;
+

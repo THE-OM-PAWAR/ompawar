@@ -7,6 +7,8 @@ interface FeaturePosterCardProps {
   linkText?: string;
   href?: string;
   className?: string;
+  description?: string;
+  children?: React.ReactNode;
 }
 
 export const FeaturePosterCard: React.FC<FeaturePosterCardProps> = ({
@@ -16,11 +18,13 @@ export const FeaturePosterCard: React.FC<FeaturePosterCardProps> = ({
   linkText = "stillermind.ai",
   href,
   className = "",
+  description,
+  children,
 }) => {
   return (
     <div className={`w-full bg-background text-foreground flex flex-col ${className}`}>
       {/* Media Section */}
-      <div className="relative w-full overflow-hidden">
+      <div className="relative w-full overflow-hidden rounded-md border border-border/40">
         {videoSrc ? (
           <video
             src={videoSrc}
@@ -41,11 +45,21 @@ export const FeaturePosterCard: React.FC<FeaturePosterCardProps> = ({
 
       {/* Bottom Editorial Content Section */}
       <div className="pt-3 pb-1 flex flex-col gap-2">
-        <p className="text-xs font-serif font-normal text-foreground leading-snug tracking-tight">
-          {headline}
-        </p>
+        {headline && (
+          <p className="text-xs font-serif font-medium text-foreground leading-snug tracking-tight">
+            {headline}
+          </p>
+        )}
 
-        {href ? (
+        {description && (
+          <p className="text-[11px] text-muted-foreground leading-relaxed">
+            {description}
+          </p>
+        )}
+
+        {children}
+
+        {href && (
           <a
             href={href}
             target="_blank"
@@ -54,10 +68,6 @@ export const FeaturePosterCard: React.FC<FeaturePosterCardProps> = ({
           >
             {linkText}
           </a>
-        ) : (
-          <span className="text-[10px] font-mono text-muted-foreground">
-            {linkText}
-          </span>
         )}
       </div>
     </div>

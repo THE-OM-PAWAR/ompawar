@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ArrowLeft, Sparkles, ExternalLink } from "lucide-react";
 import { useCanvasTransition } from "@/context/CanvasTransitionContext";
 import LinkPreview from "@/components/LinkPreview";
+import FeaturePosterCard from "@/components/FeaturePosterCard";
 import {
   Tooltip,
   TooltipContent,
@@ -23,60 +24,39 @@ interface ProjectItem {
 
 const PROJECTS: ProjectItem[] = [
   {
-    id: "oplus-ai",
-    title: "Oplus AI",
-    role: "Co-Founder & Lead Engineer",
-    category: "aiml",
-    subtitle: "Tiktok for games — AI-driven gaming clips & discovery platform",
+    id: "cloudone",
+    title: "CloudOne CLI",
+    role: "Creator & Lead Architect",
+    category: "devops",
+    subtitle: "Command-line dev tool & Vercel-style deployment dashboard",
     description:
-      "Engineered an interactive gaming clip discovery platform featuring AI-powered video recommendations, creator analytics, and instant clip feeds.",
-    tags: ["React", "AI / ML", "Python", "Node.js", "AWS"],
-    href: "https://playoplus.in",
-    aiEnabled: true,
+      "Engineered CloudOne CLI — a command-line developer tool helping developers manage CI/CD pipelines, integrate with GitHub, and deploy applications effortlessly. Coupled with a Vercel-like web dashboard to track and manage deployments.",
+    tags: ["CLI Tool", "CI/CD", "GitHub API", "TypeScript", "Node.js", "Docker"],
+  },
+  {
+    id: "xpert-homecare",
+    title: "Xpert Homecare Management System",
+    role: "Lead Full-Stack & Mobile Architect",
+    category: "fullstack",
+    subtitle: "Web management dashboard & dual React Native mobile applications",
+    description:
+      "Engineered the complete Xpert Homecare management dashboard along with two native React Native applications (one for doctors & delivery agents, one for patients). Integrates real-time bookings, status updates, and dispatch handling via Socket.io and a production-grade backend.",
+    tags: ["React Native", "React", "Node.js", "Socket.io", "MongoDB"],
+    href: "https://xperthomecare.com/",
   },
   {
     id: "getstay",
     title: "GetStay.in",
     role: "Founder & Full-Stack Developer",
     category: "fullstack",
-    subtitle: "Hostel & PG management software plus student discovery directory",
+    subtitle: "Hostel accommodation marketplace for students & working professionals",
     description:
-      "Built a SaaS platform for hostel and PG owners with room management, student verification, and local search.",
+      "A marketplace for hostels designed for students and working professionals to find accommodation. Selected among the Top 8 Startups of Eo-gSEA, currently operating in Bhopal with over 50+ hostels.",
     tags: ["Next.js", "TypeScript", "PostgreSQL", "TailwindCSS"],
     href: "https://getstay.in",
   },
-  {
-    id: "godigiweb",
-    title: "GoDigiWeb",
-    role: "Founder & Solutions Architect",
-    category: "fullstack",
-    subtitle: "Helping businesses scale with custom web & cloud architecture",
-    description:
-      "Designed and deployed custom web applications, membership portals, and cloud solutions tailored for growing businesses.",
-    tags: ["React", "Node.js", "AWS EC2", "Docker"],
-    href: "https://www.godigiweb.site/",
-  },
-  {
-    id: "hospital-ai",
-    title: "Real-time AI Hospital System",
-    role: "Hackathon Winner Project",
-    category: "aiml",
-    subtitle: "Real-time triage with LLM integration & custom Figma UI/UX",
-    description:
-      "Developed a hospital triage system using LLM models to assess symptom severity and dispatch medical staff dynamically.",
-    tags: ["React", "Socket.io", "Python / LLM", "Figma"],
-    aiEnabled: true,
-  },
-  {
-    id: "chat-app",
-    title: "Real-time Multi-Room Chat",
-    role: "Full-Stack Project",
-    category: "fullstack",
-    subtitle: "High-concurrency instant messaging with presence tracking",
-    description:
-      "Built a scalable real-time messaging application supporting custom rooms, active online presence, and persistent chat logs.",
-    tags: ["React", "Node.js", "Socket.io", "MongoDB"],
-  },
+
+
   {
     id: "erpnext-aws",
     title: "ERPNext Cloud Infrastructure",
@@ -101,6 +81,28 @@ const ProjectsView = () => {
   return (
     <div className="relative min-h-screen w-full bg-background transition-colors duration-500">
       <div className="relative z-[2] mx-auto max-w-2xl px-8 sm:px-10 pb-20 pt-20 md:pt-28">
+        {/* Right Top Feature Card */}
+        <div className="hidden xl:block absolute -right-64 2xl:-right-76 top-40 w-60 2xl:w-68 pointer-events-auto">
+          <FeaturePosterCard
+            imageSrc="/voice-agent-poster.jpg"
+            headline="AI Voice Agent for Businesses"
+          >
+            <div className="text-[11px] text-muted-foreground leading-relaxed flex flex-col gap-2 mt-1 font-sans">
+              <p>
+                Working on an AI voice agent platform for businesses to integrate directly into their websites as automated receptionists to handle user queries, provide customer support, and book appointments.
+              </p>
+              <p>
+                Automatically refines business data and executes queries using custom MCPs for each business with lower token usage.
+              </p>
+              <div className="pt-2 border-t border-border/40 font-mono text-[10px] text-foreground/90 space-y-1">
+                <p className="font-semibold text-foreground">Solving two key challenges:</p>
+                <p>• Reducing cost to ₹1 / min conversation.</p>
+                <p>• Minimizing latency & enabling natural conversation flow via fine-tuning + custom MCPs.</p>
+              </div>
+            </div>
+          </FeaturePosterCard>
+        </div>
+
         {/* Top Header & Navigation */}
         <div>
           <button
@@ -148,36 +150,35 @@ const ProjectsView = () => {
         <div className="mt-8 space-y-8">
           {filteredProjects.map((project) => (
             <div key={project.id} className="group">
-              <div className="flex items-start justify-between gap-3">
-                <div>
-                  <div className="flex items-center gap-2">
-                    <h2 className="text-sm sm:text-base font-medium text-foreground group-hover:underline underline-offset-2">
+              <div>
+                <div className="flex items-center gap-2">
+                  {project.href ? (
+                    <LinkPreview href={project.href}>
+                      <h2 className="text-sm sm:text-base font-medium text-foreground hover:underline underline-offset-2 inline-flex items-center gap-1.5">
+                        <span>{project.title}</span>
+                        <ExternalLink size={13} className="text-muted-foreground" />
+                      </h2>
+                    </LinkPreview>
+                  ) : (
+                    <h2 className="text-sm sm:text-base font-medium text-foreground">
                       {project.title}
                     </h2>
-                    {project.aiEnabled && (
-                      <TooltipProvider delayDuration={0}>
-                        <Tooltip>
-                          <TooltipTrigger asChild>
-                            <Sparkles className="w-3.5 h-3.5 text-muted-foreground hover:text-foreground transition-colors cursor-pointer" />
-                          </TooltipTrigger>
-                          <TooltipContent side="top" className="text-xs">
-                            AI enabled project
-                          </TooltipContent>
-                        </Tooltip>
-                      </TooltipProvider>
-                    )}
-                  </div>
-                  <p className="text-xs text-muted-foreground mt-0.5">{project.role}</p>
-                </div>
+                  )}
 
-                {project.href && (
-                  <LinkPreview href={project.href}>
-                    <span className="text-xs text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1 font-serif italic">
-                      <span>Visit</span>
-                      <ExternalLink size={12} />
-                    </span>
-                  </LinkPreview>
-                )}
+                  {project.aiEnabled && (
+                    <TooltipProvider delayDuration={0}>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <Sparkles className="w-3.5 h-3.5 text-muted-foreground hover:text-foreground transition-colors cursor-pointer" />
+                        </TooltipTrigger>
+                        <TooltipContent side="top" className="text-xs">
+                          AI enabled project
+                        </TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+                  )}
+                </div>
+                <p className="text-xs text-muted-foreground mt-0.5">{project.role}</p>
               </div>
 
               <p className="mt-2 text-xs font-serif italic text-foreground font-normal">
